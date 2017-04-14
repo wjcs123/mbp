@@ -1,0 +1,14 @@
+BlankSlot.pdf
+BlankBW_upload.pdf
+BlankBW_download.pdf
+以上三个是图9图10，修改了图10，从折线图改成了柱状图
+横坐标40表示在利用率（30-50）之间的，90表示利用率在（80-100）之间的
+
+AccRatio.pdf
+是图11，B_in=1000Mbps是在（800-1200）随机取值
+B_ex=1200Mbps是在（1000-1400）随机取值
+Dependency改成30%
+
+Constraint.pdf
+是图12，横坐标700表示在（600，800）随机取值，800表示在（700，900）随机取值
+以此类推
