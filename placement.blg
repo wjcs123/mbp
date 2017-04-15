@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-This is BibTeX, Version 0.99dThe top-level auxiliary file: placement.aux
-The style file: elsarticle-num.bst
-Database file #1: reference.bib
-Warning--can't use both volume and number fields in B11tpd
-Warning--empty year in NFV
-Warning--empty pages in NFV
-Warning--empty pages in D12tpp
-Warning--empty author in HuaweiNFV
-Warning--empty pages in HuaweiNFV
-Warning--empty author in CloudNFV
-Warning--empty pages in CloudNFV
-Warning--empty pages in M14sap
-Warning--empty pages in packing
-Warning--empty author in sriov
-Warning--empty pages in netvm
-(There were 12 warnings)
-=======
 This is BibTeX, Version 0.99dThe top-level auxiliary file: placement.aux
 The style file: IEEEtran.bst
 Database file #1: reference.bib
@@ -30,4 +12,3 @@ Warning--empty year in sriov
 
 Done.
 (There were 5 warnings)
->>>>>>> 3e31439246ff7bebf74b72ebba1a31418edd72ea

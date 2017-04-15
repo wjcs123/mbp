@@ -5,9 +5,8 @@
 \BOOKMARK [2][-]{subsection.3.2}{Model of MB VMs}{section.3}% 5
 \BOOKMARK [2][-]{subsection.3.3}{Virtual Network Model for MB VMs and APP VMs}{section.3}% 6
 \BOOKMARK [1][-]{section.4}{Virtual Middlbox Network\(VMN\) Deployment}{}% 7
-\BOOKMARK [2][-]{subsection.4.1}{Bandwidth Constraint within a Physical Machine}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.2}{Bandwidth Required by VMN}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.3}{VM Placement Strategies}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.4}{VM Placement Algorithm}{section.4}% 11
-\BOOKMARK [1][-]{section.5}{Evaluation}{}% 12
-\BOOKMARK [1][-]{section.6}{Conclusion}{}% 13
+\BOOKMARK [2][-]{subsection.4.1}{Bandwidth Required by VMN}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{VM Placement Strategy}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{VM Placement Algorithm}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Evaluation}{}% 11
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 12
