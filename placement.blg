@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This is BibTeX, Version 0.99dThe top-level auxiliary file: placement.aux
 The style file: elsarticle-num.bst
 Database file #1: reference.bib
@@ -14,3 +15,19 @@ Warning--empty pages in packing
 Warning--empty author in sriov
 Warning--empty pages in netvm
 (There were 12 warnings)
+=======
+This is BibTeX, Version 0.99dThe top-level auxiliary file: placement.aux
+The style file: IEEEtran.bst
+Database file #1: reference.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty year in NFV
+Warning--empty author in HuaweiNFV
+Warning--empty author in CloudNFV
+Warning--empty author in sriov
+Warning--empty year in sriov
+
+Done.
+(There were 5 warnings)
+>>>>>>> 3e31439246ff7bebf74b72ebba1a31418edd72ea
