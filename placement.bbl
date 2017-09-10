@@ -114,12 +114,4 @@ A.~Fischer, J.~F. Botero, M.~Till~Beck, H.~De~Meer, and X.~Hesselbach,
   ``Virtual network embedding: A survey,'' \emph{IEEE Communications Surveys \&
   Tutorials}, vol.~15, no.~4, pp. 1888--1906, 2013.
 
-\bibitem{sriov}
-``\protect{PCI-SIG SR-IOV},'' \emph{$http://www.pcisig.com/iov/single_root/$}.
-
-\bibitem{netvm}
-J.~Hwang, K.~Ramakrishnan, and T.~Wood, ``Netvm: high performance and flexible
-  networking using virtualization on commodity platforms,'' in \emph{NSDI},
-  2014.
-
 \end{thebibliography}
