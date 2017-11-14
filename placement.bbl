@@ -105,6 +105,11 @@ S.~Mehraghdam, M.~Keller, and H.~Karl, ``Specifying and placing chains of
 R.~Cohen, L.~Lewin-Eytan, J.~S. Naor, and D.~Raz, ``Near optimal placement of
   virtual network functions,'' in \emph{IEEE INFOCOM}, 2015, pp. 1346--1354.
 
+\bibitem{hose_model}
+N.~G. Duffield, P.~Goyal, A.~Greenberg, P.~Mishra, K.~K. Ramakrishnan, and
+  J.~E. van~der Merive, ``A flexible model for resource management in virtual
+  private networks,'' in \emph{ACM SIGCOMM}, 1999.
+
 \bibitem{packing}
 C.~Chekuri and S.~Khanna, ``On multi-dimensional packing problems,'' in
   \emph{SODA}, 1999.

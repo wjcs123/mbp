@@ -1,12 +1,12 @@
 %%*********************************************************************%%
 
-%\documentclass[10pt, conference, letterpaper]{IEEEtran}
+\documentclass[10pt, conference, letterpaper]{IEEEtran}
 
 
-\documentclass[review]{elsarticle}
-\usepackage{lineno,hyperref}
+%\documentclass[review]{elsarticle}
+%\usepackage{lineno,hyperref}
 
-\modulolinenumbers[5]
+%\modulolinenumbers[5]
 %\IEEEoverridecommandlockouts
 %\usepackage{cite}
 %\usepackage{makecell}
@@ -45,10 +45,10 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\begin{frontmatter}
+%\begin{frontmatter}
 \title{A Joint Virtual Middleboxes and Application Placement Algorithm in Multi-tenant Datacenter Networks}
 
-
+\begin{comment}
 \author{Jian Wang}
 \author{Xuewei Zhang}
 \author{Xiaoliang Wang\corref{correspondingauthor}}
@@ -56,24 +56,18 @@
 \ead{waxili@nju.edu.cn}
 \author{Sanglu Lu\corref{}}
 \address{National Key Laboratory for Novel Software Technology, Nanjing University, Nanjing, P.R. China}
-\begin{comment}
+\end{comment}
+%\begin{comment}
 \author{\IEEEauthorblockN{Jian Wang, Xuewei Zhang, Xiaoliang Wang, Sanglu Lu}
 \IEEEauthorblockA{National Key Laboratory for Novel Software Technology\\
 Nanjing University, Nanjing, P.R. China\\
-Email: waxili@nju.edu.cn}
-\and
-\IEEEauthorblockN{Layong Luo}
-\IEEEauthorblockA{Microsoft Research\\
-Email: laluo@microsoft.com}
-\and
-\IEEEauthorblockN{Camtu Nguyen}
-\IEEEauthorblockA{Lextend Corp.\\
-ncamtu@gmail.com}
-}
+Email: waxili@nju.edu.cn}}
+%\begin{comment}
 
-\end{comment}
+%\end{comment}
+%\end{comment}
 % make the title area
-%\maketitle
+\maketitle
 
 
 \begin{abstract}
@@ -81,12 +75,12 @@ Hardware middleboxes are widely used in current cloud datacenter to provide netw
 is then proposed to offer predictable network performance for each accepted tenant, and minimize  datacenter bandwidth utilization. Extensive simulation results based on current large-scale datacenter networks verify that EMB can accept more tenant requests than existing placement algorithm(e.g., Stratos) while saving almost 10\% more high-level links' bandwidth.
 %is effective and provides network performance guarantee for tenants. 
 \end{abstract}
-\begin{keyword}
-	\texttt{network virtulization}, middlebox, VM placement, bandwidth guarantee, datacenter
-\end{keyword}
-\end{frontmatter}
+%\begin{keyword}
+%	\texttt{network virtulization}, middlebox, VM placement, bandwidth guarantee, datacenter
+%\end{keyword}
+%\end{frontmatter}
 %\IEEEpeerreviewmaketitle
-\linenumbers
+%\linenumbers
 \section{Introduction}
 Large public clouds, such as Amazon EC2 and Windows Azure, provide infrastructure as a service (IaaS) for enterprises and individuals. Besides the ability to provide computing resources, public clouds are expected to support network functionality, such as load balancers, firewall, intrusion detection system, etc. Currently, network functions are widely deployed by the expensive hardware middleboxes (HW MBs). As illustrated in Fig. \ref{fig:topo}, hardware middleboxes are placed at the point close to the data center switches. Since hardware middleboxes are shared by all tenants, it is hard to manage these expensive devices to provide customized functions for each tenant. Also, heavy congestion may happen at links around those middleboxes. To address these issues, cloud providers and researchers introduce software middleboxes (or, interchangeably, virtual middleboxes, middlebox VMs) in the cloud \cite{G13dio, stratos12}. % As a result, enterprises can compose complex network functionality on general-purpose servers, and enhance the availability, security and scalability of their services. Recent advances in this direction show that software middleboxes running on commodity servers are capable of working at line speed \cite{D12tpp, S12dai, netvm}.
 
@@ -119,7 +113,7 @@ Moreover, to make good use of both physical machine resource and network bandwid
 
 
 To the best of our knowledge, we are the first to model both the  virtual middlebox and application network placement problem in multi-tenant datacenter networks with minimal performance guarantees. Extensive simulations on large-scale datacenter topology have shown the effectiveness of our VMs placement algorithm. The accept ratio approaches to 90\% with regard to a variety of tenants' requests in a large-scale datacenter topology. Compared with the existing placement algorithm, our algorithm can also greatly reduce the bandwidth utilization of high level links while making the best of low-level links' bandwidth resource. %fragment that can not be used by newly arrived tenant requests. 
-Compared with the hardware middlebox placements in current datacenters, our VMs placement algorithm shows significant saving on network bandwidth while taking account of performance guarantee. Generally, the network function virtualization enables the cloud services provider to offer customized services with lower cost and our study will be helpful to build more flexible software-based cloud services to meet diverse requirements of  the tenants in the datacenter network.
+Compared with the hardware middlebox placements in current datacenters, our VMs placement shows significant saving on network bandwidth in terms of providing  performance guarantee. Generally, the network function virtualization enables the cloud services provider to offer customized services with lower cost and our study will be helpful to build more flexible software-based cloud services to meet diverse requirements of  the tenants in the datacenter network.
 
 %In general, we focus on tenant's requirement abstraction and effective VMs placement algorithm to achieve high network resource utilization in a datacenter. The contribution of this paper can be summarized as follows,
 %\begin{itemize}
@@ -128,9 +122,12 @@ Compared with the hardware middlebox placements in current datacenters, our VMs 
 %	\item moreover, we addressed the scalable issue of the mb placement which is the first time. because it is hard to evaluate the system requirement of mb, besides, the requirement is also variable.
 %\end{itemize}
 
-The rest of this paper is organized as follows. Sec. \ref{sec:background} reviews the background and related works on tenant's performance guarantee in the multi-tenant datacenter. Sec. \ref{sec:abstraction} describes our abstraction of middlebox and the communication model. The VMs placement algorithm is explained in Sec. \ref{sec:algorithm}, and the simulation based performance evaluation is demonstrated in Sec. \ref{sec:simulation}. Sec. \ref{sec:final} concludes this paper.
+The rest of this paper is organized as follows. Sec. \ref{sec:background} reviews the background, related works and challenges of deploying tenant requests effectively in datacenter networks.
+% tenant's performance guarantee in the multi-tenant datacenter. 
+Sec. \ref{sec:abstraction} describes our abstraction of middlebox and the communication model. The VMs placement algorithm is explained in Sec. \ref{sec:algorithm}, and the simulation based performance evaluation is demonstrated in Sec. \ref{sec:simulation}. Sec. \ref{sec:final} concludes this paper.
 
-\section{Background and Related Works}\label{sec:background}
+\section{Background and Challenges}\label{sec:background}
+\subsection{Background and Related Works}
 \textbf{Multi-tenant datacenter }
 Large-scale datacenter is the core infrastructure for cloud based services. Datacenter network is organized in a multi-level tree-like topology. See Fig. \ref{fig:topo}, each rack typically contains 40+ servers, each of which is configured a 10Gbps network interface card (NIC) connecting to the top-of-the-rack (ToR) switch. The ToR switch will balance the traffic to multiple aggregation switches. All aggregation switches are further connected to the core switches. Note that the communication bandwidth between adjacent layers is oversubscribed by a ratio from 2:1 to 10:1, which may vary slightly with different configurations \cite{B13cta, williamson2010has}.
 
@@ -150,13 +147,30 @@ Since the underlying network is shared by tenants, the application can be affect
 Most of previous works considered the bandwidth guarantee for applications. As far as we know, little work addresses the bandwidth guarantee for virtual MBs in multi-tenant datacenters \cite{7243304}. The NFV cloud computing platforms, like NFV OPEN LAB \cite{HuaweiNFV} and CloudNFV \cite{CloudNFV}, provide NFV management and orchestration as applications. Theoretically, to obtain effect use of resources, various NFV placement objectives have been studied, for example, remaining data rate, latency, number of used network node as well as distance and setup cost, see \cite{M14sap, cohen2015near} and the references therein. However, they could not provide bandwidth guarantee for tenants. Stratos \cite{stratos12} considered the middlebox placement in multi-tenant datacenters through a systematic way by avoiding network congestion. In contrast, we first study the bandwidth guarantee
 %consumption
  problem of both virtual middleboxes and application and then propose effective placement algorithm to make good use of network resources.
+ 
+%\textcolor{red}{test}
+%{\color{red}
 
+\subsection{Design Challenges}
+
+Deploying both virtual middleboxes and application with performance guarantee is challenging for cloud service providers in datacenter networks due to several reasons following. 
+
+\textbf{Model to specify the tenants' requirement}
+In order to effectively deploy the tenant requests, we need to accurately model the tenant requirements, which consists of middlebox, application, as well as the intra- or inter-tenant communication patterns. Besides, an intuitive and descriptive abstract model benefits both tenants and providers, which is not trial to build. To address above problems, we adopt the \emph{Tenant Application Graph (TAG)} \cite{cloudmirror} model and extend the Hadrian \cite{B13cta} model to properly match the tenant requirements. We introduce the modelling details in Sec. \ref{sec:abstraction}. 
+
+% Defining a communication model for a middlebox service chain or an intra-tenant VMs' communication is trial, 
+\textbf{Approach to accommodate the scaling requirement}
+It is a remarkable fact that the behavior of current software middleboxes is actually not easy to predict in the real system. The performance depends on multiple factors, including workload like traffic demands, type and number of rules, and middelbox design, e.g., algorithm design, systematical implementation, etc. Therefore, the scalability of MBs is important and need to be considered by the cloud service provider. Once the virtual network are placed in datacenter, it is hard to find a proper resource to migrate MBs and re-allocate live flows across MBs with performance guarantee \cite{G13dio}. We discuss the scalability issue in Appendix.
+
+\textbf{Strategy to place both the middleboxes and application}
+Given tenant requests and corresponding communication models, our objective is to maxmize the datacenter resources utilization by accepting as many requests as possible. This is an NP-hard problem like optimally deploying the \emph{hose model} \cite{hose_model, cloudmirror}. Therefore, we search for effective heuristic solution to maximize the datacenter resources utilization. We present our placement algorithm in Sec. \ref{sec:algorithm}. 
+%}
 \section{Abstraction of Virtual Middlebox Network}\label{sec:abstraction}
 In a multi-tenant datacenter, by leveraging the network function virtualization (NFV), cloud providers provide middlebox as a fundamental network service to tenants, like both computing and storage resources. A tenant could specify their middlebox and application (i.e., computation/storage) requirements in forms of VMs and the expected minimum bandwidth requirement for intra- and inter-tenant communication. Cloud providers will then assign VMs for middleboxes (in short, MB VMs) and applications (in short, APP VMs) according to the tenant's request. The cloud providers also enforce the middlebox policies, i.e., the sequence of middleboxes that a flow must traverse. In this section, we explain the model for APP VMs and MB VMs. We then introduce the abstraction of virtual networks associated to one tenant.
 
 
 \subsection{Model of APP VMs}
-To provide predictable network performance for the communication of $N$ APP VMs in one tenant, users typically specify the minimum bisection bandwidth $B^{in}$ for individual APP VM. Analogous to previous proposals \cite{B13cta, P12fst}, the requirement of the minimum bandwidth guarantee for each APP VM belonging to the same tenant can be abstracted by the \emph{hose model}. In the hose model (see the thick black arrows in Fig. \ref{fig:hose}, tenant P), the application VMs are connected to a logical switch by a link of capability $B^{in}$.
+To provide predictable network performance for the communication of $N$ APP VMs in one tenant, users typically specify the minimum bisection bandwidth $B^{in}$ for individual APP VM. Analogous to previous proposals \cite{B13cta, P12fst}, the requirement of the minimum bandwidth guarantee for each APP VM belonging to the same tenant can be abstracted by the \emph{hose model} \cite{hose_model}. In the hose model (see the thick black arrows in Fig. \ref{fig:hose}, tenant P), the application VMs are connected to a logical switch by a link of capability $B^{in}$.
 
 \begin{figure}
 	\centering
@@ -188,10 +202,10 @@ Generally, the communication between MBs can be abstracted by a directed-acyclic
 
 % (important) However the abstraction of DAG may increase the representation and placement burden of middleboxes. Alternatively, the DAG can be simplified by partitioning the shared middleboxes to form multiple chains \cite{stratos12}. derived from the DAG given in Fig. \ref{fig:chain} (a) This operation is reasonable because a tenant can enable flow distribution at the head of DAG graph. , which classify the traffic 
 
-Since a tenant may need to apply different middlebox policies to different traffic class, the tenant request can be classified into multiple MBs chains associated with different applications \cite{stratos12, M14sap, 7243304}. See Fig. \ref{fig:chain} as an example. The Internet traffic will pass Firewall, Intrusion Detection System and then NAT proxy, while the traffic from other tenant may only pass Firewall and Load Balancer. Therefore, a middlebox chain model can be defined by a tuple $\langle T, M \rangle$, where the type of MBs is denoted by a vector $T$, and the number of required MB VMs is denoted by a vector $M$. The direction of traffic flow is implicitly expressed by the sequence of items in the vector $T$. For instance, the first MB chain in Fig. \ref{fig:chain} can be expressed as $\langle T, M \rangle$, where $T=\{\text{FW, IDS, Proxy}\}, M=\{2, 4, 2\}$. It means that the tenant request for 2, 4 and 2 VMs of FW, IDS, and Proxy respectively. The traffic will arrive at FW first, and then go to IDS and pass Proxy before reaching the application VMs.
+Since a tenant may need to apply different middlebox policies to different traffic class, the tenant request can be classified into multiple MBs chains associated with different applications \cite{stratos12, M14sap, 7243304}. See Fig. \ref{fig:chain} as an example. The Internet traffic will pass Firewall, Intrusion Detection System and then NAT proxy, while the traffic from other tenant may only pass Firewall and Load Balancer. Therefore, a middlebox chain model can be defined by a tuple $\langle T, M \rangle$, where the type of MBs is denoted by a vector $T$, and the number of required MB VMs is denoted by a vector $M$. The direction of traffic flow is implicitly expressed by the sequence of items in the vector $T$. For instance, the first MB chain in Fig. \ref{fig:chain} can be expressed as $\langle T, M \rangle$, where $T=\{\text{FW, IDS, Proxy}\}, M=\{2, 4, 2\}$ (we will present the computing process in detail to obtain a more accurate value of $M$ in Sec. \ref{sec:algorithm}). It means that the tenant request for 2, 4 and 2 VMs of FW, IDS, and Proxy respectively. The traffic will arrive at FW first, and then go to IDS and pass Proxy before reaching the application VMs.
 
 \subsection{Virtual Network Model for MB VMs and APP VMs} 
-We combine the MB model and APP model together to form the virtual network (VN) model to represent the tenant's request. The interaction between VMs of the same tenant is expressed by the hose model. The middlebox chain should be attached to the ingress path of the external link of the VN. Such that, all external traffic coming into APP VMs must traverse through these specified middlebox chains which provide access control and other network functions. CloudMirror \cite{cloudmirror} provided a new network abstraction that allows the applications to specify their directional and specific communication pattern. We adopt a cascade of \emph{Tenant Application Graph (TAG)} proposed in \cite{cloudmirror} to specify the VN model. 
+We combine the MB model and APP model together to form the virtual network (VN) model to represent the tenant's request. The interaction between VMs of the same tenant is expressed by the \emph{hose model} \cite{hose_model}. The middlebox chain should be attached to the ingress path of the external link of the VN. Such that, all external traffic coming into APP VMs must traverse through these specified middlebox chains which provide access control and other network functions. CloudMirror \cite{cloudmirror} provided a new network abstraction that allows the applications to specify their directional and specific communication pattern. We adopt a cascade of \emph{Tenant Application Graph (TAG)} proposed in \cite{cloudmirror} to specify the VN model. 
 
 Fig. \ref{fig:abstraction} (a) shows an example, where a sequence of MBs is attached at the external link of APP VMs of tenants. The arrow shows the traffic flow. Arrival traffic of tenant A will pass through all these middleboxes before being distributed to the application services. Similarly,  the departure traffic of tenant A is forwarded to its destination (tenant P) which needs to pass through the middleboxes of tenant P first \footnote{Some corporations may have the requirement to detect the departure traffic through additional middleboxes. We leave this for future work. }.  Fig. \ref{fig:abstraction} (b) uses the cascade of TAG model to abstract the communication dependency of VNs. The external traffic passing through each type of middleboxes in sequence are expressed by the dedicated directional arrows. The internal traffic of APP VMs is expressed by bi-directional arrows, each of which has a capacity of $B_{A}^{in}$ (tenant A) or $B_{P}^{in}$ (tenant P). The external traffic of each VM of tenant A (resp. tenant P) is bounded by $B_{A}^{ex}$ (resp. $B_{P}^{ex}$). 
 \begin{figure}
@@ -204,18 +218,20 @@ Fig. \ref{fig:abstraction} (a) shows an example, where a sequence of MBs is atta
 % and 3) the traffic from the other VN belonging to the same tenant
 In general, two kinds of traffic may go through the MBs before come to the Application VMs, 1) the Internet traffic; 2) the traffic from other tenant. When declaring a connectivity relationship, this external link can only communicate with those specified VNs. The unauthorized traffic will be blocked by MBs. Based on the models of APP VMs and MB VMs, a tenant can specify the connectivity of an external link which receives (or sends) traffic from any VN. In summary, a tenant's request can be specified by multiple virtual networks (VNs) and each VN can be specified by a tuple $<N, B^{in}, B^{ex}, dependencies, T, M>$. 
 
+\begin{comment}
 \noindent \textbf{Remark } 
 It is a remarkable fact that the behavior of current software middleboxes is actually not easy to predict in the real system. The performance depends on multiple factors, including workload like traffic demands, type and number of rules, and middelbox design, e.g., algorithm design, systematical implementation, etc. Therefore, the scalability of MBs is important and need to be considered by the cloud service provider. Once the virtual network are placed in datacenter, it is hard to find a proper resource to migrate MBs and re-allocate live flows across MBs with performance guarantee \cite{G13dio}. We discuss the scalability issue in Appendix.
-
+\end{comment}
 % Specifically, the VMs inside the blue dotted line are pre-allocated VMs for middleboxes subrequirement, which are shared by both types of middleboxes requests. If there are scale-out or failover request, specified MBs will be placed on these VMs to provide performance guarantee. 
 
 \section{Virtual Middlbox Network(VMN) Deployment}\label{sec:algorithm}
 Based on the tenant's request, the cloud provider allocates enough resources for MBs and APPs. The VMs request will be satisfied by providing enough free slots on physical machines (PMs). The network function demand consists not only the bandwidth request but also the capability to process a specific class of traffic in order. We present a VM placement algorithm that bridges the gap between the high-level virtual middlbebox network model to the low-level physical network. The placement strategy is realized by a logically centralized controller, which manages datacenter operations through a global view of the network topology. SDN based traffic engineering manipulates the underlying network routers to explicitly direct the class of traffic through each middlebox sequentially. If there are not sufficient resources, the request will be rejected. 
 
 
-The virtual machine placement problems have attracted a lot of attentions recently, which are often formalized as a multi-dimensional packing problem with various constraints. This problem is NP-hard \cite{packing, fischer2013virtual}. %In this paper, 
-Therefore, we search for effective heuristic solution to maximize the datacenter resources utilization. %Before introducing the VMs placement algorithm, we first explain some practical constraints in our design. Next, 
-In this section, we first analyze the bandwidth requirement for the tenant request. Next, we give two placement principles according to the bandwidth requirement analysis. Finally, we present our placement algorithm to efficiently deploy the VMN model. 
+%The virtual machine placement problems have attracted a lot of attentions recently, which are often formalized as a multi-dimensional packing problem with various constraints. This problem is NP-hard \cite{packing, fischer2013virtual}. %In this paper, 
+
+%Therefore, we search for effective heuristic solution to maximize the datacenter resources utilization. %Before introducing the VMs placement algorithm, we first explain some practical constraints in our design. Next, 
+In this section, we first analyze the bandwidth requirement for the tenant request. Next, we give a two-step placement strategy according to the bandwidth requirement analysis. Finally, we present our placement algorithm to efficiently deploy the VMN model. 
 %our placement stratety we present our placement strategy by combining two simple placement algorithms. 
 
 %\begin{figure}
@@ -236,7 +252,17 @@ In this section, we first analyze the bandwidth requirement for the tenant reque
 %\end{equation}
 %Then we can obtain the total number of VMs required for the middleboxes and applications. 
 Given a tenant request, the cloud provider need to allocate sufficient bandwidth on the physical links to meet the bandwidth guarantees requirement specified in the VMN model.
-For each VMN model, we assume that the total incoming traffic is shared equally among each instance of $MB_k$. And the practical required bandwidth $b_k$ for each instance of the same type MB can be calculated by :
+%\begin{comment} 
+We assume each instance of $MB_k$ has
+a maximal traffic processing capacity $c_k$, so the minimum
+required number of $MB_k$ is:
+\begin{equation}
+ M_{k}={\left\lceil\frac{N \cdot B^{ex}}{c_{k}}\right\rceil}. 
+\end{equation}
+Then we can obtain the total number of VMs required for the middleboxes and applications.
+%\end{comment}
+For each VMN model, %we assume that 
+the total incoming traffic is shared equally among each instance of $MB_k$. And the practical required bandwidth $b_k$ for each instance of the same type MB can be calculated by :
 \begin{equation}
 \label{equ:bk}
 b_{k}=\frac{N\cdot B^{ex}}{M_{k}}.
@@ -274,7 +300,7 @@ b_{k}=\frac{N\cdot B^{ex}}{M_{k}}.
 %	\label{TRAIN:}
 %\end{figure}
 %In the subsequence,%
-Based on above calculation, we analyze the bandwidth consumption to achive a better understanding of the MBs placement problem. Assume that we have found two candidate subtrees that have enough slots to hold the required VMs as shown in Fig. \ref{fig:bw}. The total number of instances required for $MB_k$ is indicated by $M_k$. And $m_k$ is the number of instances placed for $MB_k$  in the left subtree. %The number of VMs for the application is $n_{app}$ in the left subtree.%
+Based on above calculation, we analyze the bandwidth consumption to achieve a better understanding of the MBs placement problem. Assume that we have found two candidate subtrees that have enough slots to hold the required VMs as shown in Fig. \ref{fig:bw}. The total number of instances required for $MB_k$ is indicated by $M_k$. And $m_k$ is the number of instances placed for $MB_k$  in the left subtree. %The number of VMs for the application is $n_{app}$ in the left subtree.%
  Correspondingly, the number of instances for $MB_k$ in the right subtree is $M_k-m_k$. The $n_{app}$ and $N-n_{app}$ are the number of APP VMs in the left and right subtrees respectively. Suppose the arrival traffic is $N*B^{ex}$ and the middlebox instances prefer to send the traffic to its downstream middlebox instances inside the same subtree.
 
 We then calculate the bandwidth consumption. The traffic flows across and inside the subtrees are illustrated in thick and fine arrows respectively. Specifically, we find that the bandwidth consumption across the subtrees consists of four parts indicated by $B_1$, $B_2$, $B_3$ and $B_4$. The $B_1$ is the external traffic (represented by the black arrows) from the switch to $MB_1$ which is equal to $N\cdot B^{ex}$. The traffic that cannot be fully processed by $MB_2$ will be partly sent to the instances of $MB_2$ in the opposite subtree as shown in the blue arrow labeled by $B_2$. Similarly, the traffic from $MB_2$ in the right to APP will be partly sent to the APP VMs in the left subtree (red arrow labled by $B_3$) if the capacity of APP VMs in the right cannot serve the whole traffic from $MB_2$ in the same side. Besides, the bandwidth requirement (dotted arrow labeled by $B_4$) for intra-tenant communication is $2min⁡(n_{app}  ,N-n_{app})\cdot B^{in}$. For simplicity, we only consider the downlink bandwidth consumption since the uplink bandwidth has the similar characteristics. Based on above analysis, we can easily get the total downlink bandwidth requirement across the subtrees:
@@ -310,7 +336,7 @@ $B_{switch,mb_1}$ is the incoming traffic for $MB_1$ from the switch which is a 
 
 %Considering the advantages of the two strategies, we seek to obtain a more powerful placement algorithm to achive bandwidth saving by combining them. 
 %\begin{comment}
-We then obtain key conditions to achive bandwidth saving through careful placement of MB and APP VMs from Eq.\ref{equ:bw_equation}. We only consider the bandwidth requirement $B_{mb_k,mb_{k+1}}$, $B_{mb,app}$, and $B_{app}$ since $B_{switch,mb_1}$ is a constant. 
+We then obtain key conditions to achieve bandwidth saving through careful placement of MB and APP VMs from Eq.\ref{equ:bw_equation}. We only consider the bandwidth requirement $B_{mb_k,mb_{k+1}}$, $B_{mb,app}$, and $B_{app}$ since $B_{switch,mb_1}$ is a constant. 
 %\end{comment}
 %Based on above results, 
 More specifically, to reduce the traffic $B_{mb_k,mb_{k+1}}$ and $B_{mb,app}$ crossing the subtrees caused by the unbalanced capacity between the upstream and downstream MBs or APPs, we can place the MBs and APPs proportionally in the two subtrees according to their traffic processing capacity. In addition, as $n_{app}$ increases from zero to $N$, the intra-tenant bandwidth $B_{app}$ increases from zero to $2\cdot (N/2)\cdot B^{in}$ when $n_{app} = N/2$ and then derease to zero. So through colocating more APP VMs in one subtree, we can greatly save the intra-tenant bandwidth $B_{app}$ . 
@@ -355,7 +381,7 @@ i.e., if $B^{in}>(B^{ex}+b_2)$, the bandwidth will be saved for both of the link
 \label{equ:condition}
 \end{equation}
 
-Thus, using the improved exchangeable conditions to select the proper type of middleboxes for exchanging \footnote{Equ. \ref{equ:condition} is a sufficient but not necessary condition for bandwidth saving through exchanging, and we can also have bandwidth saving even the VMs are placed randomly initially in the two subtrees by exchanging using Equ. \ref{equ:condition}.},
+Thus, using the improved exchangeable conditions to select the proper type of middleboxes for exchanging \footnote{Equ. \ref{equ:condition} is a sufficient but not necessary condition for bandwidth saving through exchanging, and we can also have bandwidth saving even the VMs are placed randomly initially by exchanging using Equ. \ref{equ:condition}.},
 	%\begin{comment}and we currently only consider one type of middlebox for exchanging at a time. While it may achieve a larger bandwidth saving by exchanging two or more different types of middleboxes simultanously. We leave this for future work.},\end{comment}}
 we cannot achieve a total bandwidth saving but ensuring a bandwidth reduction for each of the links when placing the tenant request.
 
@@ -364,7 +390,7 @@ we cannot achieve a total bandwidth saving but ensuring a bandwidth reduction fo
 
 Based on above placement principles and exchangeable conditions, we design an effective heuristic VM placement algorithm that achieves bandwidth savings while providing guarantees. The basic idea behind the algorithm is to place MBs and APPs proportionally initially to minimize the bandwidth consumption due to the unbalanced capacity assignment between middleboxes and application VMs; and then try to colocate more APPs to reduce the bandwidth cost of intra-tenant communication through exchanging MBs and APPs. 
 
-Alorithm 1 depicts the process to handle a tenant request. The algorithm starts with $PlaceTenant$ (line 1), which takes a tenant request t as an input. To save the precious core level bandwidth, we traverse the datacenter topology in a bottom-up manner to search for a valid lowest level subtree that has enough VM slots for t (line 2). For the candidate subtree, we place t in it with $AllocateVM$ (line 4) and then check whether the bandwidth requirement can be satisfied (line 5). If the trial fails due to the lack of bandwidth, $DeAllocate$ (line 7) is invoked to release the resources reserved for the tenant request. And the algorithm continues to find another subtree in the same level or upper level if there is no subtree in the same level (line 8). 
+Algorithm 1 depicts the process to handle a tenant request. The algorithm starts with $PlaceTenant$ (line 1), which takes a tenant request t as an input. To save the precious core level bandwidth, we traverse the datacenter topology in a bottom-up manner to search for a valid lowest level subtree that has enough VM slots for t (line 2). For the candidate subtree, we place t in it with $AllocateVM$ (line 4) and then check whether the bandwidth requirement can be satisfied (line 5). If the trial fails due to the lack of bandwidth, $DeAllocate$ (line 7) is invoked to release the resources reserved for the tenant request. And the algorithm continues to find another subtree in the same level or upper level if there is no subtree in the same level (line 8). 
 \begin{algorithm}[!htbp]
 	\caption{VM Placement Algorithm}
 	\label{alg1}
@@ -449,7 +475,7 @@ Alorithm 1 depicts the process to handle a tenant request. The algorithm starts 
  $AllocateVM$ (line 10) is a recursive function, which takes a tenant request t, its APP and MB VMs’ number and a subtree st as inputs. The function first checks if the st is the lowest level subtree or physical server: if so, it allocates corresponding number of slots for t according to the parameters of $N_{app}$ and $N_{mb}$ in the server and then returns. If st is a higher level switch, we then invoke $AllocateVM$ recursively for each subtree v of st which has available VM slots. For the subtree v that cannot provide enough slots for the unallocated MB and APP VMs, we first attempt to place appropriate number of MBs and APPs according to the placement principle1 to fill the subtree v and then colocate as many APPs as possible by exchanging MBs and APPs using the exchangeable conditions of Equ. \ref{equ:condition} . After that, we invoke the function $AllocateVM$ (line 24) for the ajusted MB and APPs. While for the subtree of st that has sufficient slot resource, AllocateVm is invoked directly (line 26). 
 
 %The function exchangeMbApp is invoked to exchange the positions of MBs and APPs. 
-In Algorithm 2, $ExchangeMbApp$ (line 1) is invoked to exchange the positions of MBs and APPs. The function first identifies the types of middleboxes that can achieve bandwidth saving through exchanging their and APPs’ positions by using the exchangeable conditions of Eq. \ref{equ:condition} (line 2). If the exchangeable middleboxes exist, we then check the number of APPs in the two subtrees and exchange the smaller one with the MBs to increase the degree of colocation for APPs. We excute the exchanging until all exchangeable MBs or APPs have been exchanged. If current exchangeable MBs have been exchanged completely, we then select the next exchangeable type of MBs to exchange (line 9). After each exchanging, we update the number of MBs and APPs in the two sides.
+In Algorithm 2, $ExchangeMbApp$ (line 1) is invoked to exchange the positions of MBs and APPs. The function first identifies the types of middleboxes that can achieve bandwidth saving through exchanging their and APPs' positions by using the exchangeable conditions of Eq. \ref{equ:condition} (line 2). If the exchangeable middleboxes exist, we then check the number of APPs in the two subtrees and exchange the smaller one with the MBs to increase the degree of colocation for APPs. We excute the exchanging until all exchangeable MBs or APPs have been exchanged. If current exchangeable MBs have been exchanged completely, we then select the next exchangeable type of MBs to exchange (line 9). After each exchanging, we update the number of MBs and APPs in the two sides.
 \begin{figure}
 	\centering
 	\subfigure[Accept rate under different $B^{in}$]{
@@ -528,7 +554,10 @@ For a better understanding of above results, we then evaluate the downlink bandw
 %We then evaluate the impact of $B^{in}$ and bandwidth constraint inside a PM. The bandwidth constraint within a physical machine limits the number of VMs allowed to be placed. The experimental results are shown in Fig. \ref{fig:pm_constraint}. It is observable that when internal bandwidth constraint is considered, the accept rate of tenant requests quickly drops as $B^{in}$ increases. As the link capacity and internal constraint are the same in our simulation, a request is always limited by the internal PM constraint first, which reduces the number of available VM slots and leads to a lower accept rate.
 
 \section{Conclusion}\label{sec:final}
-Since middleboxes are widely used in current networks, it is essential to consider middleboxes when embedding predicable virtual networks. This paper tries to fill the gap. To achieve this goal, this paper first models the tenant's requirement of software middleboxes and applications. By augumenting software middleboxes as VMs in the Tenant Application Graph, an VMs placement algorithm, called EMB, is proposed to place these VMs (including both normal application VMs and virtual middleboxes) in the underlying infrastructure. The evaluation results have shown that the proposed virtual middleboxes placement algorithm can effectively use the resource of multi-tenant datacenters and provide performance guarantee for tenants.   
+Since middleboxes are widely used in current networks, it is essential to consider middleboxes when embedding predicable virtual networks. This paper tries to fill the gap. To achieve this goal, this paper first models the tenant's requirement of software middleboxes and applications. By augumenting software middleboxes as VMs in the Tenant Application Graph, a VMs placement algorithm, called EMB, is proposed to place these VMs (including both normal application VMs and virtual middleboxes) in the underlying infrastructure. 
+%Besides, we present a probability based solution for scalibility issues.
+%requirements.
+The evaluation results have shown that the proposed virtual middleboxes placement algorithm can effectively use the resource of multi-tenant datacenters and provide performance guarantee for tenants.   
 
  
 
@@ -542,27 +571,60 @@ Since middleboxes are widely used in current networks, it is essential to consid
 
 
 \bibliographystyle{IEEEtran}
-\section*{References}
+%\section*{References}
 \bibliography{reference}
 
-
 \section*{Appendix}
-\appendix
+%\appendix
 To address the problem of unpredictable MB performance, instead of allocating new resources of VMs and network after MBs are placed in datacenters, we introduce a probability model to represent the variable resource requirement of individual tenant. Through statistically multiplexing on VMs, we are able to balance the physical resources consumption and scalability requirement of software MBs. 
 
 %To deal with scalability issue of software middleboxes with minimum bandwidth guarantee, 
 We re-examine the MBs request and take the time-varying resource requirements of MBs into consideration. Specifically, the MBs' requirement is composed of a basic requirement and a variable requirement with probablity. Based on this model, we replace the $\langle T, M \rangle$ in Section \ref{sec:modelformb} with tuples $\langle T, M, m, P\rangle$, where $T$ and $M$  denote the type of MBs and the corresponding number of VMs in the basic requirement, and $m$ denotes the number of VMs in the variable subrequirement with probability $P$. For example, given $T=\{\text{FW, IDS, LB}\}, M=\{ 2, 4, 2\}, m=\{1, 2, 1\}, P=\{0.3, 0.2, 0.3\}$, we then know that the tenant request for 2 firewall MBs and the request may increase to $2+1=3$ MBs with probability of 0.2. Similarly, 4 IDS MBs (resp. 2 LB MBs) are needed with probability 0.8 (resp. 0.7) and 6 IDS MBs (resp. 3 LB MBs) with a probability of 0.2 (resp. 0.3). In summary, a tenant's request can be specified by multiple virtual networks (VNs) and each VN can be specified by an eight-tuple $<N, B^{in}, B^{ex}, dependencies, T, M, m, P>$. It allows elasticity by having a probability model for the number of MBs needed in each VN. 
 
-If multiple units of subrequirement do not occur simultaneously, we can provide few redundancy to tradeoff between utilization and availability. By sharing free VMs between variable subrequirements, a specific MB can be soon deployed on the free VM once the scale up/out requirement comes. Although the subrequirement occurs with a probability less than 1, the collision may happen if there is not enough VM provided. To guarantee the performance, we apply the probabilistic model to solve this problem. For simplicity, we reuse the notation $M$ to indicate how many types of MBs are required by tenant. Let $X_{i}$ indicate whether the $i$-th subrequirement occurs. Assuming the resource requirement of different middleboxes are independent, the probability of the collision happening on one supplement VM is
-\begin{align}
-&Pr\left[ \sum_{i=1}^{M} X_{i} > 1 \right] & \nonumber \\
-&= 1-\prod_{i=1}^{M}(1-p_{i})-\sum_{i=1}^{M}\left(p_{i}\prod_{k\in[1,M], k\neq i}(1-p_{k})\right)&
-\end{align}
-By providing enough number of free VMs during virtual middleboxes network deployment, the probability of collision can be guaranteed less than a collision threshold $\rho$ when the system is on board. The number of subrequirement $v$ can be determined by solving the following function:
-\begin{equation}\label{equ:collision}  
-		Pr\left[ \sum_{i=1}^{M} X_{i} \leq v \right] \leq \rho
+If multiple units of subrequirement do not occur simultaneously, we can provide few redundancy to tradeoff between utilization and availability. By sharing free VMs between variable subrequirements, a specific MB can be soon deployed on the free VM once the scale up/out requirement comes. Although the subrequirement occurs with a probability less than 1, the collision may happen if there is not enough VM provided. To guarantee the performance, we apply the probabilistic model to solve this problem. For simplicity, we reuse the notation $T$ to indicate how many types of MBs are required by tenant. Let $X$ represent the practical scaled  number of VMs and $X_{i}$ indicate whether the $i$-th scaling subrequirement occurs. Clearly, $X=\sum_{i=1}^{T}X_{i}\cdot m_{i}$. Assuming the resource requirement of different middleboxes are independent and $v$ free VMs are reserved for sharing, the probability of the collision happening is
+%on one supplement VM is
+%\begin{align}
+%&Pr\left[ \sum_{i=1}^{M} X_{i} > 1 \right] & \nonumber \\
+%&= 1-\prod_{i=1}^{M}(1-p_{i})-\sum_{i=1}^{M}\left(p_{i}\prod_{k\in[1,M], k\neq i}(1-p_{k})\right)&
+%\end{align}
+\begin{equation} 
+\begin{aligned}
+Pr\left[X>v\right]
+& = Pr\left[\sum_{i=1}^{T}X_{i}\cdot m_{i}>v\right]\\
+& = Pr\left[X=v+1 \right] + Pr\left[X=v+2 \right]\\
+& + ...+ Pr\left[X=m \right] \\
+& = \sum_{i=v+1}^{m}Pr\left[X=i \right],
+\end{aligned}
 \end{equation}
-The collision probability $Pr\left[ \sum_{i=1}^{M} X_{i} \leq v \right]$ can be achieved based on the including excluding principle. Therefore, the total number of MB VMs to be allocated for one tenant is $|M|+v$, where $|M|$ is the number of basic MBs requirement and $v$ is the additional free VMs to be allocated as backup resources. Therefore, 
+where $m$ is the max number of possible scaled VMs and equal to the sum of all number of VMs in the variable subrequirement, i.e., $m=\sum_{i=1}^{T} m_i$.
+By providing enough number of free VMs during virtual middleboxes network deployment, the probability of collision can be guaranteed less than a collision threshold $\rho$ when the system is on board. The number of subrequirement $v$ reserved for sharing can be determined by solving the following function:
+\begin{equation}\label{equ:collision}  
+	\begin{aligned} 
+		Pr\left[ X>v \right] \leq \rho \quad or	\quad Pr\left[ \sum_{i=1}^{T} X_{i}\cdot m_{i} > v \right] \leq \rho.
+	\end{aligned}
+\end{equation}
+The upper bound of collision probability $Pr\left[X>v\right]$ can be achieved based on the Markov's inequality, i.e.,
+\begin{equation}
+	\begin{aligned} 
+		 Pr\left[X>v\right]\leq \frac{E(X)}{v}.
+	\end{aligned}
+\end{equation} 
+$E(X)$ is the expectation of $X$ and can be calculated by $E(X)=E(\sum_{i=1}^{T}X_{i}\cdot m_{i}) = \sum_{i=1}^{T}E(X_i)\cdot m_i$. Generally, let $\frac{E(X)}{v}=\rho$, we can obtain a rough evaluation for $v$.
+However, for a higher utilization of reserved VMs, a  more accurate  value of $v$ is required.
+ Considering the numbers of MB types and possible scaled VMs are small, we can easily compute the probabilities of all possible numbers of scaled VMs according to the tuples $\langle T, M, m, P \rangle$.
+ Further, we can get the minimum number of VMs needed to be reserved by solving 
+\begin{equation}
+\begin{aligned}
+  \min\limits_{v\geq 0}(v) \quad s.t. \quad \sum_{i=v+1}^{m}Pr\left[X=i \right] \leq \rho
+\end{aligned} .
+\end{equation}
+%  which is subject to using Chernoff bound, we can obtain a more  tighter result:
+%\begin{equation}
+%	\begin{aligned} 
+%		Pr\left[X>v \right] \leq e^{-\frac{\delta^2\cdot\mu}{3}
+%	\end{aligned} 
+%\end{equation}
+Therefore, the total number of MB VMs to be allocated for one tenant is $|M|+v$, where $|M|$ is the number of basic MBs requirement and $v$ is the minimum additional free VMs to be allocated as backup resources. Specifically, the reserved free VMs are pre-allocated under the same subtree as normal allocated VMs, which can greatly reduce unnecessary  bandwidth consumption crossing racks or subtrees.
 
 \begin{figure}
 	\centering
