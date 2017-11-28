@@ -1,14 +1,18 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Background and Related Works}{}% 2
-\BOOKMARK [1][-]{section.3}{Abstraction of Virtual Middlebox Network}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Model of APP VMs}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{Model of MB VMs}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Virtual Network Model for MB VMs and APP VMs}{section.3}% 6
-\BOOKMARK [1][-]{section.4}{Virtual Middlbox Network\(VMN\) Deployment}{}% 7
-\BOOKMARK [2][-]{subsection.4.1}{Bandwidth Required by VMN}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.2}{VM Placement Strategy}{section.4}% 9
-\BOOKMARK [1][-]{section.5}{Evaluation}{}% 11
-\BOOKMARK [2][-]{subsection.4.3}{VM Placement Algorithm}{section.4}% 10
-\BOOKMARK [1][-]{section.6}{Conclusion}{}% 12
-\BOOKMARK [1][-]{section*.2}{References}{}% 13
-\BOOKMARK [1][-]{section*.4}{Appendix}{}% 14
+\BOOKMARK [1][-]{section.2}{Background and Challenges}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Background and Related Works}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Design Challenges}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Abstraction of Virtual Middlebox Network}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Model of APP VMs}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Model of MB VMs}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{Virtual Network Model for MB VMs and APP VMs}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Virtual Middlbox Network \(VMN\) Deployment}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Overview of the Placement Algorithm}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Bandwidth Required by VMN}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{VM Placement Strategy}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.4}{VM Placement Algorithm}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Middlebox Scaling Approach}{}% 14
+\BOOKMARK [1][-]{section.6}{Evaluation}{}% 15
+\BOOKMARK [2][-]{subsection.6.1}{Simulation Setup}{section.6}% 16
+\BOOKMARK [2][-]{subsection.6.2}{Simulation Results}{section.6}% 17
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 18
