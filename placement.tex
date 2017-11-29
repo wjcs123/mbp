@@ -8,7 +8,7 @@
 
 \modulolinenumbers[5]
 
-\journal{Journal of \LaTeX\ Templates}
+\journal{Journal of Computer Networks}
 %\IEEEoverridecommandlockouts
 %\usepackage{cite}
 %\usepackage{makecell}
@@ -27,6 +27,7 @@
 \usepackage{color}
 \usepackage{verbatim}
 \usepackage[justification=centering]{caption}
+\usepackage{wrapfig}
 \flushend
 
 
@@ -87,7 +88,7 @@ is then proposed to offer predictable network performance for each accepted tena
 \end{keyword}
 \end{frontmatter}
 %\IEEEpeerreviewmaketitle
-\linenumbers
+%\linenumbers
 \section{Introduction}
 Large public clouds, such as Amazon EC2 and Windows Azure, provide infrastructure as a service (IaaS) for enterprises and individuals. Besides the ability to provide computing resources, public clouds are expected to support network functionality, such as load balancers, firewall, intrusion detection system, etc. Currently, network functions are widely deployed by the expensive hardware middleboxes (in short, MBs) placed at the point close to the data center switches. %As illustrated in Fig. \ref{fig:topo}, hardware middleboxes are placed at the point close to the data center switches. 
 Since hardware middleboxes are shared by all tenants, it is hard to manage these expensive devices to provide customized functions for each tenant. Also, heavy congestion may happen at links around those middleboxes. To address these issues, there is an increasing trend towards deploying 
@@ -100,7 +101,7 @@ Providing virtual middleboxes with guaranteed performance is challenging for clo
 
 
 %Inspired by recent works on application-driven bandwidth guarantee \cite{B13cta, cloudmirror},
-In this paper, we propose EMAP, a solution that combines a tenant request model with an effective placement algorithm for both middleboxes and application, while accommodating the middlebox scaling requirement through a probability based approach.  
+In this paper, we propose EMAP, a solution that combines a tenant request model with an effective placement algorithm for both middleboxes and application, while accommodating the middlebox scaling requirement through a probability model based approach.  
 %we consider the middlebox placement strategy to overcome these challenges. 
 Tenant's requirement is represented by a weighted directed acyclic graph (DAG). The nodes consist of diverse virtual middleboxes and a set of homogeneous application VMs, both of which are dedicated for each tenant to process arrival traffic. The edge of DAG indicates the communication request of middlebox-to-middlebox, middlebox-to-application traffic and intra-applications. The weight on the edge is the minimum communication requirement between VMs of middleboxes and application \cite{stratos12, B11tpd}. The inter-tenant communication \cite{B13cta} is also structured by a directed graph. The arrival traffic from other tenants will be forwarded to the MBs of the target tenant before arriving at its application VMs.
 
@@ -419,12 +420,6 @@ Further, using the improved exchangeable conditions to select the proper type of
 	%\begin{comment}and we currently only consider one type of middlebox for exchanging at a time. While it may achieve a larger bandwidth saving by exchanging two or more different types of middleboxes simultanously. We leave this for future work.},\end{comment}}
 we cannot achieve a total bandwidth saving but ensuring a bandwidth reduction for each of the links when placing the tenant request.
 
-
-\subsection{VM Placement Algorithm}
-
-Based on above placement principles and exchangeable conditions, we design an effective heuristic VM placement algorithm that achieves bandwidth savings while providing guarantees. The basic idea behind the algorithm is to place MBs and APPs proportionally initially to minimize the bandwidth consumption due to the unbalanced capacity assignment between middleboxes and application VMs; and then try to colocate more APPs to reduce the bandwidth cost of intra-tenant communication through exchanging MBs and APPs. 
-
-Algorithm 1 depicts the process to handle a tenant request. The algorithm starts with $PlaceTenant$ (line 1), which takes a tenant request t as an input. To save the precious core level bandwidth, we traverse the datacenter topology in a bottom-up manner to search for a valid lowest level subtree that has enough VM slots for t (line 2). For the candidate subtree, we place t in it with $AllocateVM$ (line 4) and then check whether the bandwidth requirement can be satisfied (line 5). If the trial fails due to the lack of bandwidth, $DeAllocate$ (line 7) is invoked to release the resources reserved for the tenant request. And the algorithm continues to find another subtree in the same level or upper level if there is no subtree in the same level (line 8). 
 \begin{algorithm}[!htbp]
 	\caption{VM Placement Algorithm}
 	\label{alg1}
@@ -432,88 +427,97 @@ Algorithm 1 depicts the process to handle a tenant request. The algorithm starts
 		\Function{PlaceTenant}{Tenant t}
 		\State st = FindlowestSubtree(t, null);
 		\While{st}
-		   \State AllocateVM(t, t.mb, t.app, st);
-		   \If{ReserveBw(t)}
-			   \State return true;
-		   \EndIf 
-		   \State DeAllocate(t);
-		   \State st = FindLowestSubtree(t, st);
-%		   \If {st is null}
-%			   \State return false
-%		   \EndIf
+		\State AllocateVM(t, t.mb, t.app, st);
+		\If{ReserveBw(t)}
+		\State return true;
+		\EndIf 
+		\State DeAllocate(t);
+		\State st = FindLowestSubtree(t, st);
+		%		   \If {st is null}
+		%			   \State return false
+		%		   \EndIf
 		\EndWhile
 		\State return false;
-%		\State
-	  \EndFunction
-	  \Function{AllocateVM}{t, $N_{mb\_app}$, st}\\
-	  /* $N_{mb\_app}$ stores the numbers of instances for 
-	  \State each type of middleboxes, and application VMs */
-	  %while $N_{app}$ is the number of application VMs */
-	  \If {level(st)==0} /*st is a server*/
-		  \State PlaceMBAPP(t, $N_{mb\_app}$, st);
-%		  \State PlaceAPP(t, $N_{app}$, st);
-	  \Else
-	  \For {each subtree v of st}
-		  \If{freeVM(v)$>$0}
-			  \If{freeVM(v)$<$TotalVM($N_{mb\_app}$)}
-				  \State place
-				  % $N_{v\_mb\_app}$
-				  MBs and APPs \State proportionally under v;
-				%  \State $N_{mb} = N_{mb} - N_{v\_mb}$;
-				 % \State $N_{app} = N_{app} - N_{v\_app}$;
-				 \State /* $N_{v\_mb\_app}$ stores the numbers of 
-				 \State MBs and APPs placed under v */
-				 \State $N_{mb\_app} = N_{mb\_app} - N_{v\_mb\_app}$;
-				  \State ExchangeMbApp(t,$N_{mb\_app}$,$N_{v\_mb\_app}$);
-				  \State AllocateVM(t, $N_{v\_mb\_app}$, v);
-		      \Else
-			      \State AllocateVM(t, $N_{mb\_app}$, v);
-			  \EndIf
+		%		\State
+		\EndFunction
+		\Function{AllocateVM}{t, $N_{mb\_app}$, st}\\
+		/* $N_{mb\_app}$ stores the numbers of instances for 
+		\State each type of middleboxes, and application VMs */
+		%while $N_{app}$ is the number of application VMs */
+		\If {level(st)==0} /*st is a server*/
+		\State PlaceMBAPP(t, $N_{mb\_app}$, st);
+		%		  \State PlaceAPP(t, $N_{app}$, st);
+		\Else
+		\For {each subtree v of st}
+		\If{freeVM(v)$>$0}
+		\If{freeVM(v)$<$TotalVM($N_{mb\_app}$)}
+		\State place
+		% $N_{v\_mb\_app}$
+		MBs and APPs \State proportionally under v;
+		%  \State $N_{mb} = N_{mb} - N_{v\_mb}$;
+		% \State $N_{app} = N_{app} - N_{v\_app}$;
+		\State /* $N_{v\_mb\_app}$ stores the numbers of 
+		\State MBs and APPs placed under v */
+		\State $N_{mb\_app} = N_{mb\_app} - N_{v\_mb\_app}$;
+		\State ExchangeMbApp(t,$N_{mb\_app}$,$N_{v\_mb\_app}$);
+		\State AllocateVM(t, $N_{v\_mb\_app}$, v);
+		\Else
+		\State AllocateVM(t, $N_{mb\_app}$, v);
 		\EndIf
-	  \EndFor
-	\EndIf
-   \EndFunction %\\
-\end{algorithmic}
+		\EndIf
+		\EndFor
+		\EndIf
+		\EndFunction %\\
+	\end{algorithmic}
 \end{algorithm}
-\begin{algorithm}
-	\caption{Exchange Algorithm}
-	\begin{algorithmic}[1]
-   \Function{ExchangeMbApp}{t,$N_{mb\_app}$,$N_{v\_mb\_app}$}
-	   \State mb = GetExchangeableMB(t);
-	   \If{mb!=null}
-	       \State $num$ is assigned as the number of types
-	       \State of the exchangeable MBs;
-	       \State $k = 0$;
-		   \If{$N_{mb\_app}[app]>N_{v\_mb\_app}[app]$}
-		     \While{$k<num \quad and\quad N_{v\_mb\_app}!=0$} 
-			   \If{$N_{mb\_app}[mb[k]]==0$}
-				   \State $k$++; $continue$;
-			   \EndIf
-			   \State /* update the numbers of MBs
-			   \State and APPs in both sides \quad \quad*/
-			   \State $N_{mb\_app}[mb[k]]$- -; $N_{mb\_app}[app]$++;
-		 	   \State $N_{v\_mb\_app}[mb[k]]$++; $N_{v\_mb\_app}[app]$- -;
-			\EndWhile
-	    \Else
-	      \While{$k<num \quad and \quad N_{mb\_app}!=0$}
-		    \If {$N_{v\_mb\_app}[mb[k]]==0$}
-			   \State $k$++; $continue$;
-			\EndIf
-			\State /* update the numbers of MBs
-			\State and APPs in both sides \quad \quad*/
-			\State $N_{v\_mb\_app}[mb[k]]$- -; $N_{v\_mb\_app}[app]$++;
-			\State $N_{mb\_app}[mb[k]]$++; $N_{mb\_app}[app]$- -;
-		 \EndWhile
-	   \EndIf
-	  \EndIf
-   \EndFunction    
-  \end{algorithmic}
-   
-\end{algorithm}		
+
+\subsection{VM Placement Algorithm}
+
+Based on above placement principles and exchangeable conditions, we design an effective heuristic VM placement algorithm that achieves bandwidth savings while providing guarantees. The basic idea behind the algorithm is to place MBs and APPs proportionally initially to minimize the bandwidth consumption due to the unbalanced capacity assignment between middleboxes and application VMs; and then try to colocate more APPs to reduce the bandwidth cost of intra-tenant communication through exchanging MBs and APPs. 
+
+Algorithm 1 depicts the process to handle a tenant request. The algorithm starts with $PlaceTenant$ (line 1), which takes a tenant request t as an input. To save the precious core level bandwidth, we traverse the datacenter topology in a bottom-up manner to search for a valid lowest level subtree that has enough VM slots for t (line 2). For the candidate subtree, we place t in it with $AllocateVM$ (line 4) and then check whether the bandwidth requirement can be satisfied (line 5). If the trial fails due to the lack of bandwidth, $DeAllocate$ (line 7) is invoked to release the resources reserved for the tenant request. And the algorithm continues to find another subtree in the same level or upper level if there is no subtree in the same level (line 8). 
+
 
  $AllocateVM$ (line 10) is a recursive function, which takes a tenant request t, its APP and MB VMs’ number and a subtree st as inputs. The function first checks if the st is the lowest level subtree or physical server: if so, it allocates corresponding number of slots for t according to the parameters of $N_{mb\_app}$ in the server and then returns. If st is a higher level switch, we then invoke $AllocateVM$ recursively for each subtree v of st which has free VM slots. For the subtree v that cannot provide enough slots for the unallocated MB and APP VMs, we first attempt to place appropriate number of MBs and APPs according to the placement principle1 to fill the subtree v and then colocate as many APPs as possible by exchanging MBs and APPs using the exchangeable conditions of Equ. \ref{equ:condition} . After that, we invoke the function $AllocateVM$ (line 25) for the ajusted MB and APPs. While for the subtree of st that has sufficient slot resource, AllocateVm is invoked directly (line 27). 
 
 %The function exchangeMbApp is invoked to exchange the positions of MBs and APPs. 
+
+\begin{algorithm}[H]
+	\caption{Exchange Algorithm}
+	\begin{algorithmic}[1]
+		\Function{ExchangeMbApp}{t,$N_{mb\_app}$,$N_{v\_mb\_app}$}
+		\State mb = GetExchangeableMB(t);
+		\If{mb!=null}
+		\State $num$ is assigned as the number of types
+		\State of the exchangeable MBs;
+		\State $k = 0$;
+		\If{$N_{mb\_app}[app]>N_{v\_mb\_app}[app]$}
+		\While{$k<num \quad and\quad N_{v\_mb\_app}!=0$} 
+		\If{$N_{mb\_app}[mb[k]]==0$}
+		\State $k$++; $continue$;
+		\EndIf
+		\State /* update the numbers of MBs
+		\State and APPs in both sides \quad \quad*/
+		\State $N_{mb\_app}[mb[k]]$- -; $N_{mb\_app}[app]$++;
+		\State $N_{v\_mb\_app}[mb[k]]$++; $N_{v\_mb\_app}[app]$- -;
+		\EndWhile
+		\Else
+		\While{$k<num \quad and \quad N_{mb\_app}!=0$}
+		\If {$N_{v\_mb\_app}[mb[k]]==0$}
+		\State $k$++; $continue$;
+		\EndIf
+		\State /* update the numbers of MBs
+		\State and APPs in both sides \quad \quad*/
+		\State $N_{v\_mb\_app}[mb[k]]$- -; $N_{v\_mb\_app}[app]$++;
+		\State $N_{mb\_app}[mb[k]]$++; $N_{mb\_app}[app]$- -;
+		\EndWhile
+		\EndIf
+		\EndIf
+		\EndFunction    
+	\end{algorithmic}
+	
+\end{algorithm}		
+
 In Algorithm 2, $ExchangeMbApp$ (line 1) is invoked to exchange the positions of MBs and APPs. The function first identifies the types of middleboxes that can achieve bandwidth saving through exchanging their and APPs' positions by using the exchangeable conditions of Eq. \ref{equ:condition} (line 2). If the exchangeable middleboxes exist, we then check the number of APPs in the two subtrees and exchange the smaller one with the MBs to increase the degree of colocation for APPs. We excute the exchanging until all exchangeable MBs or APPs have been exchanged. If current exchangeable MBs have been exchanged completely, we then select the next exchangeable type of MBs to exchange (line 9). After each exchanging, we update the numbers of MBs and APPs in the two sides.
 
 \begin{comment}
@@ -595,53 +599,9 @@ Specifically, the reserved free VMs are pre-allocated under the same subtree as 
 
 In this section, we first evaluate the benefits of our VMN model with exchanging placement algorithm. Then we simulate the tenants' scaling requirements and verify the effectiveness of our probability model based scaling approach.
 
-\begin{figure}
-	\centering
-	\subfigure[Accept rates under different $B^{in}$]{
-		\includegraphics[width=3.5in,height=2.0in]{fig/accept_rate_bin.pdf}
-		%\label{fig:accept_rate_bin}
-		%\caption{Accept rate under different $B^{in}$}
-		\label{fig:accept_rate_bin}}
-	%\includegraphics[width=3.2in]{fig/accept_rate_bin.png}
-	%\end{figure}
-	
-	%\begin{figure}
-	\subfigure[Accept rates under different $B^{ex}$]{
-		\centering
-		\includegraphics[width=3.5in,height=2.0in]{fig/accept_rate_bex.pdf}
-		%\caption{Accept rate under different $B^{ex}$}
-		\label{fig:accept_rate_bex}}
-	\caption{Accept rates under different $B^{in}$ and $ B^{ex}$}
-	\label{fig:accept_rate}
-\end{figure}
 
-\begin{figure}
-	\centering
-	
-	\subfigure[VM slot utilizations under different $B^{in}$]{
-		\label{fig:vm_util_bin}
-		\includegraphics[width=3.5in, height=2.0in]{fig/vm_util_bin.pdf}
-	}
-	\subfigure[VM slot utilizations under different $B^{ex}$]{
-		\label{fig:vm_util_bex}
-		\includegraphics[width=3.5in, height=2.0in]{fig/vm_util_bex.pdf}
-	}
-	%\label{fig:vm_util}
-	\caption{VM slot utilizations under different $B^{in}$ and $B^{ex}$}
-	\label{fig:vm_util}
-\end{figure}
 
-\begin{figure}
-	\centering
-	\subfigure[Core-aggregation links' bandwidth utilizations]{
-		\label{fig:agg_core}
-		\includegraphics[width=3.3in]{fig/high_bw_util.pdf}}
-	\subfigure[ToR-PM links' bandwidth utilizations]{
-		\label{fig:pm_agg}
-		\includegraphics[width=3.3in]{fig/low_bw_util.pdf}}
-	\caption{Bandwidth utilizations under different $B^{ex}$}
-	\label{fig:bw_util}
-\end{figure}
+
 
 \subsection{Simulation Setup}
 %We evaluate our placement algorithm via simulation. 
@@ -653,46 +613,98 @@ We build a tree-like three-layer network topology, which is inspired by a real c
 
 \textbf{Scaling requirements} For each tuple $\langle m, P\rangle$ of the scaling requirement, the scaling number $m_i$ of each MB is equally distributed in [1,8] and the scaling probability $P_i$ follows normal distribution with mean value of 0.5. 
 %To verify the effectiveness of our probability model based scaling approach, we simulate 
+
+
+
+\begin{figure}[H]
+	\centering
+	\subfigure[Accept rates under different $B^{in}$]{
+		\includegraphics[width=3.5in,height=2.5in]{fig/accept_rate_bin.pdf}
+		%\label{fig:accept_rate_bin}
+		%\caption{Accept rate under different $B^{in}$}
+		\label{fig:accept_rate_bin}}
+	%\includegraphics[width=3.2in]{fig/accept_rate_bin.png}
+	%\end{figure}
+	
+	%\begin{figure}
+	\subfigure[Accept rates under different $B^{ex}$]{
+		\centering
+		\includegraphics[width=3.5in,height=2.5in]{fig/accept_rate_bex.pdf}
+		%\caption{Accept rate under different $B^{ex}$}
+		\label{fig:accept_rate_bex}}
+	\caption{Accept rates under different $B^{in}$ and $ B^{ex}$}
+	\label{fig:accept_rate}
+\end{figure}
+
 \subsection{Simulation Results}
 \textbf{Placement of middleboxes and application} We first evaluate the tenant accept rates under different $B^{in}$ and $B^{ex}$ in Fig. \ref{fig:accept_rate}.
 %Fig. \ref{fig:accept_rate_bin} shows 
 In Fig. \ref{fig:accept_rate_bin}, we consider 
 the accept rate of tenant requests with various intra-tenant communication demands ($B^{in}$). $B^{in}$=1200 means that the tenants’ $B^{in}$ follows the normal distribution with average value as 1200 and variation equal to $B^{in}$/3=400. In Fig. \ref{fig:accept_rate_bin}, we find that both algorithms have similar accept rates with varying $B^{in}$. 
 
+
 The results of accept rate with varying external bandwidth ($B^{ex}$) are shown in Fig. \ref{fig:accept_rate_bex}. Similarly, $B^{ex}$=1200 means that $B^{ex}$ follows the normal distribution with average value of 1200 and variation as $B^{ex}$/3=400. Obviously, EMAP can always accept tenant requests reposefully. And even with large $B^{ex}$, EMAP can keep a relatively high accept rate. While the accept rate of Stratos drops quickly when $B^{ex}$ is greater than 800Mbps. This is because Stratos usually occupies more bandwidth resource in higher level links. More specifically, the number of total VMs required for tenant requests increases as $B^{ex}$ increases since we need more middlebox instances to process a larger external traffic. This leads to an increased demand for VM slots resource in the data center, and the tenant requests are forced to spread their VMs across more racks. The placement strategy used in Stratos is more likely to select the racks that reside across several subtrees to accommodate the tenant request, which may cause a big waste of bandwidth in the high-level links. While our placement algorithm always tries to select the lowest-level subtree that has sufficient VM slots for the tenant, which can save the precious bandwidth resource of the core-level links effectively. Thus, EMAP is helpful to allow the provider to accommodate more tenant requests while reducing the bandwidth utilization of core-level links which allows more future tenant requests to be accepted.
 
+\begin{figure}[H]
+	\centering
+	
+	\subfigure[VM slot utilizations under different $B^{in}$]{
+		\label{fig:vm_util_bin}
+		\includegraphics[width=3.5in, height=2.5in]{fig/vm_util_bin.pdf}
+	}
+	\subfigure[VM slot utilizations under different $B^{ex}$]{
+		\label{fig:vm_util_bex}
+		\includegraphics[width=3.5in, height=2.5in]{fig/vm_util_bex.pdf}
+	}
+	%\label{fig:vm_util}
+	\caption{VM slot utilizations under different $B^{in}$ and $B^{ex}$}
+	\label{fig:vm_util}
+\end{figure}
 Fig. \ref{fig:vm_util} shows the VM slots utilization of the datacenter under different $B^{in}$ and $B^{ex}$. We can see that the results of VM slots utilization have similar changing trends compared to the accept rates shown in Fig. \ref{fig:accept_rate}.
 %Fig. \ref{fig:accept_rate_bin} and Fig. \ref{fig:accept_rate_bex}. 
 This is reasonable since higher accept rates represent that there are more requests accepted and more VM slots resources allocated.  
-
-For a better understanding of above results, we evaluate the downlink bandwidth utilization of core-aggregation and ToR-PM links. Note that the servers are on the same layer of the three-level network topology, if there is one download bandwidth consumption, there must be another upload bandwidth consumption correspondingly. This leads to the result that the download and upload results are similar to each other. Hence, we just show the results of the download bandwidth here. The results are shown in Fig. \ref{fig:bw_util}, where the x-coordinate shows the intra-tenant bandwidth ($B^{in}$) consumption, and the y-coordinate shows the average bandwidth utilization of the core-aggregation and ToR-PM download links in the two subfigures respectively. In Fig. \ref{fig:bw_util}(a), we can see that EMAP has lower bandwidth utilization than Stratos in the core-aggregation links. On the other side, EMAP has a higher utilization of the PM-ToR links shown in Fig. \ref{fig:bw_util}(b) which, in turn, proves the effect of lowest-level subtrees locality placement of our algorithm. To sum up, EMAP can save the bandwidth efficiently of core-level links which are usually the bottlenecks for most oversubscription data center networks while making the best of low-level links’ bandwidth. 
-
-
-
-\begin{figure}
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=3.5in]{fig/collision_rate_num.pdf}
+	\subfigure[Core-aggregation links' bandwidth utilizations]{
+		\label{fig:agg_core}
+		\includegraphics[width=3.5in,height=2.5in]{fig/high_bw_util.pdf}}
+	\subfigure[ToR-PM links' bandwidth utilizations]{
+		\label{fig:pm_agg}
+		\includegraphics[width=3.5in,height=2.5in]{fig/low_bw_util.pdf}}
+	\caption{Bandwidth utilizations under different $B^{ex}$}
+	\label{fig:bw_util}
+\end{figure}
+
+For a better understanding of above results, we evaluate the downlink bandwidth utilization of core-aggregation and ToR-PM links. Note that the servers are on the same layer of the three-level network topology, if there is one download bandwidth consumption, there must be another upload bandwidth consumption correspondingly. This leads to the result that the download and upload results are similar to each other. Hence, we just show the results of the download bandwidth here. The results are shown in Fig. \ref{fig:bw_util}, where the x-coordinate shows the
+ intra-tenant bandwidth ($B^{in}$) consumption, and the y-coordinate shows the average bandwidth utilization of the core-aggregation and ToR-PM download links in the two subfigures respectively. In Fig. \ref{fig:bw_util}(a), we can see that EMAP has lower bandwidth utilization than Stratos in the core-aggregation links. On the other side, EMAP has a higher utilization of the PM-ToR links shown in Fig. \ref{fig:bw_util}(b) which, in turn, proves the effect of lowest-level subtrees locality placement of our algorithm. To sum up, EMAP can save the bandwidth efficiently of core-level links which are usually the bottlenecks for most oversubscription data center networks while making the best of low-level links’ bandwidth. 
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=3.5in,height=2.5in]{fig/collision_rate_num.pdf}
 	\caption{Practical collision rates}
 	\label{fig:collision_rate_num}
 \end{figure}
-\begin{figure}
-	\centering 
-	\includegraphics[width=3.5in]{fig/vm_util_num_p.pdf}	
-	\caption{Reserved VMs' utilizations}
-	\label{fig:vm_util_num_p}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=3.5in]{fig/vm_util_p.pdf}	
-%	\captionsetup{justification=centering}
-	\caption{Reserved VMs' utilizations
-		and practical collision rates under different collision thresholds}
-	\label{fig:vm_util_p}
-\end{figure}
+
 \textbf{Middlebox scaling approach}
 We then evaluate the effectiveness of our probability model based scaling approach. The experiment results are shown in Fig. \ref{fig:collision_rate_num}, Fig. \ref{fig:vm_util_num_p} and Fig. \ref{fig:vm_util_p} respectively. 
 
 Fig. \ref{fig:collision_rate_num} plots the practical collision rates as the number of scaling requirements increases. Specifically, we consider the practical collision rates of two different situations: 1) no free VMs reserved 2) and minimum number of free VMs needed to be reserved given a collision threshold $\rho=0.2$. We can find that the collision rates can be controlled under the threshold stablely by reserving a few free VMs for the scaling requirment, while the collision rates are comparatively high if no free VMs are reserved. 
+\begin{figure}[H]
+	\centering 
+	\includegraphics[width=3.5in,height=2.5in]{fig/vm_util_num_p.pdf}	
+	\caption{Reserved VMs' utilizations}
+	\label{fig:vm_util_num_p}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=3.5in,height=2.5in]{fig/vm_util_p.pdf}	
+	%	\captionsetup{justification=centering}
+	\caption{Reserved VMs' utilizations
+		and practical collision rates under different collision thresholds}
+	\label{fig:vm_util_p}
+\end{figure}
 
 In Fig. \ref{fig:vm_util_num_p}, we further evaluate the reserved VMs' utilizations with different collision thresholds as the number of scaling requirements increases. We can easily see that a higher reserved VMs'utilization relates to a larger collision threshold. Specially, we can guarantee that each scaling reqirement is satisfied by setting threshold $\rho=0.0$ at the cost of wasting almost a half of reserved VMs resources, which is not economic. We can also improve the reserved VMs' utilizations by setting a large value of $\rho$ (such as 0.8), but have to tolerate a high collision rates resultantly. To further illustrate the relations of reserved VMs utilizations, collision rates and collision thresholds, we plot the simulation results of the relations in Fig. \ref{fig:vm_util_p}.
 We can see that the reserved VMs' utilizations and practical collision rates grow linearly in terms of the collision thresholds. And we can have a higher reserved VMs utilizations (almost 80\%) with a lower practical collision rates (23\%) when collision threshold $\rho=0.4$. 
@@ -723,12 +735,31 @@ The evaluation results have shown that the proposed joint virtual middleboxes an
 %\bibliographystyle{IEEEtran}
 \bibliographystyle{elsarticle-num}
 \section*{References}
-\bibliography{reference2}
-
-%\section*{Appendix}
-%\appendix
+\bibliography{reference}
 
 
+\newpage
+
+\begin{wrapfigure}[6]{L}{25mm}
+	\includegraphics[width=1.0in]{wangjian.png}
+\end{wrapfigure} 
+\textbf{Jian Wang} received his Bachelor Degree from the Department of Computer Science and Technology, Harbin Engineering University. He is currently a third year graduate student of the Department of Computer Science and Technology, Nanjing University.
+He currently focus on the field of resources management in datacenter networks.
+
+
+\begin{wrapfigure}{L}{25mm}
+	\includegraphics[width=1.0in]{Wang-photo.png}
+\end{wrapfigure}
+\textbf{Xiaoliang Wang} received his Ph.D degree from Graduate School of Information Sciences, Tohoku University, Japan. He is currently an Associate Professor in the Department of Computer Science and Technology, Nanjing University, China. He was with the same university as an Associate Professor, from 2010-2014. His research interests include optical switching networks, scheduling algorithm and data center network system.  He has published over 30 technical papers at premium international journals and conferences, including IEEE TIT, IEEE TCOM, IEEE INFOCOM, USENIX ATC, AAAI, IJCAI, etc.
+
+
+
+\begin{wrapfigure}{L}{25mm} 
+	\includegraphics[width=1.0in]{sheng.eps}	
+
+\end{wrapfigure} 
+\textbf{Sheng Zhang} received his BS and PhD degrees from Nanjing University in 2008 and 2014, respectively. Currently, he is an assistant professor in the Department of Computer Science and Technology, Nanjing University. He is also a member of the State Key Lab. for Novel Software Technology. His research interests include cloud computing and mobile networks. To date, he has published more than 40 papers, including those appeared in \emph{IEEE TMC}, \emph{IEEE TPDS}, \emph{IEEE TC}, ACM MobiHoc, IEEE ICDCS, and IEEE INFOCOM. He received the Best Paper Runner-Up Award from IEEE MASS 2012.
+%\end{section}
 % that's all folks
 \end{document}
 

@@ -8,12 +8,12 @@
 \bibitem{G13dio}
 A.~Gember, R.~Grandl, J.~Khalid, A.~Akella, Design and implementation of a
   framework for software-defined middlebox networking, in: Proceedings of the
-  ACM SIGCOMM 2013, 2013, pp. 467--468.
+  ACM SIGCOMM, 2013, pp. 467--468.
 
 \bibitem{stratos12}
 A.~Gember, A.~Akella, A.~Anand, T.~Benson, R.~Grandl, Stratos: Virtual
   middleboxes as first-class entities, Tech. Rep. TR1771, University of
-  Wisconsin-Madison.
+  Wisconsin-Madison, 2012.
 
 \bibitem{B11tpd}
 H.~Ballani, P.~Costa, T.~Karagiannis, A.~Rowstron, Towards predictable
@@ -22,9 +22,8 @@ H.~Ballani, P.~Costa, T.~Karagiannis, A.~Rowstron, Towards predictable
 
 \bibitem{B13cta}
 H.~Ballani, K.~Jang, T.~Karagiannis, C.~Kim, D.~Gunawardena, G.~O'Shea, Chatty
-  tenants and the cloud network sharing problem, in: Proceedings of the 10th
-  USENIX conference on Networked Systems Design and Implementation, USENIX
-  Association, 2013, pp. 171--184.
+  tenants and the cloud network sharing problem, in: Proceedings of the USENIX
+  NSDI, USENIX Association, 2013, pp. 171--184.
 
 \bibitem{williamson2010has}
 A.~Williamson, Has amazon ec2 become over subscribed,
@@ -38,8 +37,7 @@ P.~Patel, D.~Bansal, L.~Yuan, A.~Murthy, A.~Greenberg, D.~A. Maltz, R.~Kern,
 \bibitem{ClickOS}
 J.~Martins, M.~Ahmed, C.~Raiciu, V.~Olteanu, M.~Honda, R.~Bifulco, F.~Huici,
   Clickos and the art of network function virtualization, in: Proceedings of
-  the Usenix Conference on Networked Systems Design and Implementation, 2014,
-  pp. 459--473.
+  the USENIX NSDI, USENIX Association, 2014, pp. 459--473.
 
 \bibitem{Y15NFV}
 R.~Yu, G.~Xue, V.~T. Kilari, X.~Zhang, Network function virtualization in the
@@ -52,21 +50,18 @@ I.~web portal, Network functions virtualisation., in:
 
 \bibitem{D12tpp}
 M.~Dobrescu, K.~Argyraki, S.~Ratnasamy, Toward predictable performance in
-  software packet-processing platforms, in: Proceedings of the 9th USENIX
-  conference on Networked Systems Design and Implementation, USENIX
-  Association, 2012, pp. 11--11.
+  software packet-processing platforms, in: Proceedings of the USENIX NSDI,
+  USENIX Association, 2012, pp. 11--11.
 
 \bibitem{S12dai}
 V.~Sekar, N.~Egi, S.~Ratnasamy, M.~K. Reiter, G.~Shi, Design and implementation
-  of a consolidated middlebox architecture, in: Proceedings of the 9th USENIX
-  conference on Networked Systems Design and Implementation, USENIX
-  Association, 2012, pp. 24--24.
+  of a consolidated middlebox architecture, in: Proceedings of the USENIX NSDI,
+  USENIX Association, 2012, pp. 24--24.
 
 \bibitem{P12fst}
 L.~Popa, G.~Kumar, M.~Chowdhury, A.~Krishnamurthy, S.~Ratnasamy, I.~Stoica,
   Faircloud: sharing the network in cloud computing, in: Proceedings of the ACM
-  SIGCOMM 2012 conference on Applications, technologies, architectures, and
-  protocols for computer communication, ACM, 2012, pp. 187--198.
+  SIGCOMM, ACM, 2012, pp. 187--198.
 
 \bibitem{nfv_challenges}
 R.~Mijumbi, J.~Serrat, J.-L. Gorricho, N.~Bouten, F.~De~Turck, R.~Boutaba,
@@ -86,12 +81,12 @@ S.~Mehraghdam, M.~Keller, H.~Karl, Specifying and placing chains of virtual
 
 \bibitem{cohen2015near}
 R.~Cohen, L.~Lewin-Eytan, J.~S. Naor, D.~Raz, Near optimal placement of virtual
-  network functions, in: IEEE INFOCOM, 2015, pp. 1346--1354.
+  network functions, in: Proceedings of the IEEE INFOCOM, 2015, pp. 1346--1354.
 
 \bibitem{cloudmirror}
 J.~Lee, Y.~Turner, M.~Lee, L.~Popa, S.~Banerjee, J.-M. Kang, P.~Sharma,
   Application-driven bandwidth guarantees in datacenters, in: Proceedings of
-  the 2014 ACM Conference on SIGCOMM, 2014, pp. 467--478.
+  the ACM SIGCOMM, ACM, 2014, pp. 467--478.
 
 \bibitem{hose_model}
 N.~G. Duffield, P.~Goyal, A.~Greenberg, P.~Mishra, K.~K. Ramakrishnan, J.~E.
