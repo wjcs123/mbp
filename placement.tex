@@ -8,7 +8,7 @@
 
 \modulolinenumbers[5]
 
-\journal{Journal of Computer Networks}
+\journal{Computer Networks}
 %\IEEEoverridecommandlockouts
 %\usepackage{cite}
 %\usepackage{makecell}
@@ -28,6 +28,7 @@
 \usepackage{verbatim}
 \usepackage[justification=centering]{caption}
 \usepackage{wrapfig}
+\usepackage{picinpar}
 \flushend
 
 
@@ -41,25 +42,25 @@
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
-%to replace our system name here, a user-define marco
-%\newcommand{\sysname}{\textsc{STAMP}}
-%\textcolor{red}{}
+
 
 \begin{document}
-%
-% paper title
-% can use linebreaks \\ within to get better formatting as desired
+
 \begin{frontmatter}
 %\title{A Joint Virtual Middleboxes and Application Placement Algorithm in Multi-tenant Datacenter Networks}
 \title{Joint Virtual Middleboxes and Application Placement with Bandwidth Guarantees in Multi-tenant Datacenter Networks}
 %\begin{comment}
 \author{Jian Wang}
+\ead{wjian@dislab.nju.edu.cn}
 \author{Xuewei Zhang}
+\ead{zhangxw@dislab.nju.edu.cn}
 \author{Xiaoliang Wang\corref{correspondingauthor}}
-\cortext[correspondingauthor]{Corresponding author}
+\cortext[correspondingauthor]{Corresponding author.}
 \ead{waxili@nju.edu.cn}
 \author{Sheng Zhang\corref{}}
+\ead{sheng@nju.edu.cn}
 \author{Sanglu Lu\corref{}}
+\ead{sanglu@nju.edu.cn}
 \address{National Key Laboratory for Novel Software Technology, Nanjing University, Nanjing, P.R. China}
 %\end{comment}
 %\begin{comment}
@@ -740,25 +741,42 @@ The evaluation results have shown that the proposed joint virtual middleboxes an
 
 \newpage
 
-\begin{wrapfigure}[6]{L}{25mm}
-	\includegraphics[width=1.0in]{wangjian.png}
-\end{wrapfigure} 
-\textbf{Jian Wang} received his Bachelor Degree from the Department of Computer Science and Technology, Harbin Engineering University. He is currently a third year graduate student of the Department of Computer Science and Technology, Nanjing University.
+\begin{window}[0,l,
+	\includegraphics[width=1.0in]{wangjian.png},]
+\textbf{Jian Wang} received his Bachelor degree from the Department of Computer Science and Technology, Harbin Engineering University. He is currently a third year graduate student of the Department of Computer Science and Technology, Nanjing University.
 He currently focus on the field of resources management in datacenter networks.
-
-
-\begin{wrapfigure}{L}{25mm}
-	\includegraphics[width=1.0in]{Wang-photo.png}
-\end{wrapfigure}
+\end{window} 
+%\begin{wrapfigure}{l}{25mm}
+\begin{window}[0,l,
+	{\includegraphics[width=1.0in]{zhangxw.png}},]
+%\end{wrapfigure} 
+\textbf{Xuewei Zhang} received her Bachelor degree and Master degree from the Department of Computer Science and Technology of Nanjing University in 2014 and 2017, respectively. Her research interests include datacenter network system and scheduling algorithm.
+\end{window}
+\vspace{2em}
+\begin{window}[0,l,
+	\includegraphics[width=1.0in]{Wang-photo.png},]
 \textbf{Xiaoliang Wang} received his Ph.D degree from Graduate School of Information Sciences, Tohoku University, Japan. He is currently an Associate Professor in the Department of Computer Science and Technology, Nanjing University, China. He was with the same university as an Associate Professor, from 2010-2014. His research interests include optical switching networks, scheduling algorithm and data center network system.  He has published over 30 technical papers at premium international journals and conferences, including IEEE TIT, IEEE TCOM, IEEE INFOCOM, USENIX ATC, AAAI, IJCAI, etc.
+\end{window}
 
-
-
-\begin{wrapfigure}{L}{25mm} 
-	\includegraphics[width=1.0in]{sheng.eps}	
-
-\end{wrapfigure} 
+%\newpage
+\begin{window}[0,l,
+	\includegraphics[width=1.0in]{sheng.eps},]	
 \textbf{Sheng Zhang} received his BS and PhD degrees from Nanjing University in 2008 and 2014, respectively. Currently, he is an assistant professor in the Department of Computer Science and Technology, Nanjing University. He is also a member of the State Key Lab. for Novel Software Technology. His research interests include cloud computing and mobile networks. To date, he has published more than 40 papers, including those appeared in \emph{IEEE TMC}, \emph{IEEE TPDS}, \emph{IEEE TC}, ACM MobiHoc, IEEE ICDCS, and IEEE INFOCOM. He received the Best Paper Runner-Up Award from IEEE MASS 2012.
+\end{window} 
+%\newpage
+\begin{window}[0,l,
+	\includegraphics[width=1.0in]{lu.png},]
+\textbf{Sanglu Lu} 
+received the BS, MS, and PhD
+degrees from Nanjing University in 1992, 1995,
+and 1997, respectively, all in computer science.
+She is currently a professor in the Department of
+Computer Science and Technology and the State
+Key Laboratory for Novel Software Technology.
+Her research interests include distributed computing, wireless networks, and pervasive computing. She has published more than 80 papers
+in referred journals and conferences in the above
+areas. She is a member of the IEEE.
+\end{window} 
 %\end{section}
 % that's all folks
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.22)  29 NOV 2017 20:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.22)  30 NOV 2017 22:36
 entering extended mode
 **./placement.tex
 (placement.tex
@@ -463,43 +463,85 @@ Package caption Info: subfigure package is loaded.
 \WF@everypar=\toks34
 Package: wrapfig 2003/01/31  v 3.6
 )
-\c@definition=\count150
-\c@proof=\count151
-\c@theorem=\count152
-\c@lemma=\count153
-\c@example=\count154
-\c@remark=\count155
+(D:\latex\miktex\tex\latex\picinpar\picinpar.sty
+Pictures in Paragraphs. Version 1.2a, July 13, 1993
+\br=\count150
+\bl=\count151
+\na=\count152
+\nb=\count153
+\tcdsav=\count154
+\tcl=\count155
+\tcd=\count156
+\tcn=\count157
+\cumtcl=\count158
+\cumpartcl=\count159
+\lftside=\dimen153
+\rtside=\dimen154
+\hpic=\dimen155
+\vpic=\dimen156
+\strutilg=\dimen157
+\picwd=\dimen158
+\topheight=\dimen159
+\ilg=\dimen160
+\lpic=\dimen161
+\lwindowsep=\dimen162
+\rwindowsep=\dimen163
+\cumpar=\dimen164
+\twa=\toks35
+\la=\toks36
+\ra=\toks37
+\ha=\toks38
+\pictoc=\toks39
+\rawtext=\box44
+\holder=\box45
+\windowbox=\box46
+\wartext=\box47
+\finaltext=\box48
+\aslice=\box49
+\bslice=\box50
+\wbox=\box51
+\wstrutbox=\box52
+\picbox=\box53
+\waslice=\box54
+\wbslice=\box55
+\fslice=\box56
+)
+\c@definition=\count160
+\c@proof=\count161
+\c@theorem=\count162
+\c@lemma=\count163
+\c@example=\count164
+\c@remark=\count165
  (placement.aux)
 \openout1 = `placement.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-
-(D:\latex\miktex\tex\context\base\supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+ (D:\latex\miktex\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count156
-\scratchdimen=\dimen153
-\scratchbox=\box44
-\nofMPsegments=\count157
-\nofMParguments=\count158
-\everyMPshowfont=\toks35
-\MPscratchCnt=\count159
-\MPscratchDim=\dimen154
-\MPnumerator=\count160
-\makeMPintoPDFobject=\count161
-\everyMPtoPDFconversion=\toks36
+\scratchcounter=\count166
+\scratchdimen=\dimen165
+\scratchbox=\box57
+\nofMPsegments=\count167
+\nofMParguments=\count168
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count169
+\MPscratchDim=\dimen166
+\MPnumerator=\count170
+\makeMPintoPDFobject=\count171
+\everyMPtoPDFconversion=\toks41
 ) (D:\latex\miktex\tex\latex\oberdiek\epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -511,8 +553,8 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-\AtBeginShipoutBox=\box45
-Package hyperref Info: Link coloring OFF on input line 48.
+\AtBeginShipoutBox=\box58
+Package hyperref Info: Link coloring OFF on input line 47.
 
 (D:\latex\miktex\tex\latex\hyperref\nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -520,25 +562,26 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (D:\latex\miktex\tex\generic\oberdiek\gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count162
+\c@section@level=\count172
 )
-LaTeX Info: Redefining \ref on input line 48.
-LaTeX Info: Redefining \pageref on input line 48.
-LaTeX Info: Redefining \nameref on input line 48.
+LaTeX Info: Redefining \ref on input line 47.
+LaTeX Info: Redefining \pageref on input line 47.
+LaTeX Info: Redefining \nameref on input line 47.
  (placement.out)
 (placement.out)
 \@outlinefile=\write4
 \openout4 = `placement.out'.
 
-\c@lstlisting=\count163
+\c@lstlisting=\count173
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: picinpar package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 89.
+LaTeX Font Info:    Try loading font information for U+msa on input line 90.
  (D:\latex\miktex\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 89.
+LaTeX Font Info:    Try loading font information for U+msb on input line 90.
 
 (D:\latex\miktex\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -546,7 +589,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-Overfull \hbox (0.61174pt too wide) in paragraph at lines 111--119
+Overfull \hbox (0.61174pt too wide) in paragraph at lines 112--120
 \OT1/cmr/m/n/10 VMs into per-rack par-ti-tions and tries to place them with min
 -i-mal inter-partition
  []
@@ -554,46 +597,47 @@ Overfull \hbox (0.61174pt too wide) in paragraph at lines 111--119
 [3] <fig/topology.pdf, id=110, 597.432pt x 298.716pt>
 File: fig/topology.pdf Graphic file (type pdf)
  <use fig/topology.pdf>
-Package pdftex.def Info: fig/topology.pdf used on input line 123.
+Package pdftex.def Info: fig/topology.pdf used on input line 124.
 (pdftex.def)             Requested size: 231.26378pt x 115.63274pt.
 
 [4 <./fig/topology.pdf>] [5] [6] [7]
 <fig/tagmodel.pdf, id=420, 205.9695pt x 68.05426pt>
 File: fig/tagmodel.pdf Graphic file (type pdf)
  <use fig/tagmodel.pdf>
-Package pdftex.def Info: fig/tagmodel.pdf used on input line 198.
+Package pdftex.def Info: fig/tagmodel.pdf used on input line 199.
 (pdftex.def)             Requested size: 252.94499pt x 83.57538pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 203.
 
+[8]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 204.
 
-(D:\latex\miktex\tex\latex\base\omscmr.fd
+ (D:\latex\miktex\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 203.
- [8] [9 <./fig/tagmodel.pdf>]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 204.
+ [9 <./fig/tagmodel.pdf>]
 <fig/chain.pdf, id=482, 157.78949pt x 46.37325pt>
 File: fig/chain.pdf Graphic file (type pdf)
  <use fig/chain.pdf>
-Package pdftex.def Info: fig/chain.pdf used on input line 219.
+Package pdftex.def Info: fig/chain.pdf used on input line 220.
 (pdftex.def)             Requested size: 216.81pt x 63.722pt.
  [10 <./fig/chain.pdf>] <fig/abstraction.pdf, id=517, 264.38774pt x 105.39375pt
 >
 File: fig/abstraction.pdf Graphic file (type pdf)
 
 <use fig/abstraction.pdf>
-Package pdftex.def Info: fig/abstraction.pdf used on input line 235.
+Package pdftex.def Info: fig/abstraction.pdf used on input line 236.
 (pdftex.def)             Requested size: 252.94499pt x 100.83589pt.
  [11] [12 <./fig/abstraction.pdf>] [13]
 <fig/bandwidth_requirement3.pdf, id=598, 779.31152pt x 632.3625pt>
 File: fig/bandwidth_requirement3.pdf Graphic file (type pdf)
 
 <use fig/bandwidth_requirement3.pdf>
-Package pdftex.def Info: fig/bandwidth_requirement3.pdf used on input line 302.
+Package pdftex.def Info: fig/bandwidth_requirement3.pdf used on input line 303.
 
 (pdftex.def)             Requested size: 231.2624pt x 180.66904pt.
 
-Overfull \hbox (4.36174pt too wide) in paragraph at lines 331--333
+Overfull \hbox (4.36174pt too wide) in paragraph at lines 332--334
 []\OT1/cmr/m/n/10 Based on above cal-cu-la-tion, we an-a-lyze the band-width co
 n-sump-tion to achieve
  []
@@ -613,11 +657,11 @@ Missing character: There is no ™ in font cmr10!
 File: fig/exchange_example.pdf Graphic file (type pdf)
 
 <use fig/exchange_example.pdf>
-Package pdftex.def Info: fig/exchange_example.pdf used on input line 378.
+Package pdftex.def Info: fig/exchange_example.pdf used on input line 379.
 (pdftex.def)             Requested size: 252.94499pt x 160.56154pt.
  [16] [17 <./fig/exchange_example.pdf>] [18]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 424.
+put line 425.
 
 [19] [20]
 Missing character: There is no â in font cmr10!
@@ -628,21 +672,21 @@ Missing character: There is no ™ in font cmr10!
 File: fig/scalability.pdf Graphic file (type pdf)
 
 <use fig/scalability.pdf>
-Package pdftex.def Info: fig/scalability.pdf used on input line 587.
+Package pdftex.def Info: fig/scalability.pdf used on input line 588.
 (pdftex.def)             Requested size: 238.49121pt x 112.13472pt.
  [25 <./fig/scalability.pdf>]
 <fig/accept_rate_bin.pdf, id=863, 821.0675pt x 574.145pt>
 File: fig/accept_rate_bin.pdf Graphic file (type pdf)
 
 <use fig/accept_rate_bin.pdf>
-Package pdftex.def Info: fig/accept_rate_bin.pdf used on input line 625.
+Package pdftex.def Info: fig/accept_rate_bin.pdf used on input line 626.
 (pdftex.def)             Requested size: 252.93718pt x 180.67265pt.
 
 <fig/accept_rate_bex.pdf, id=864, 821.0675pt x 574.145pt>
 File: fig/accept_rate_bex.pdf Graphic file (type pdf)
 
 <use fig/accept_rate_bex.pdf>
-Package pdftex.def Info: fig/accept_rate_bex.pdf used on input line 634.
+Package pdftex.def Info: fig/accept_rate_bex.pdf used on input line 635.
 (pdftex.def)             Requested size: 252.93718pt x 180.67265pt.
  [26]
 Missing character: There is no â in font cmr10!
@@ -656,28 +700,28 @@ ultiple pdfs with page group included in a single page
 File: fig/vm_util_bin.pdf Graphic file (type pdf)
 
 <use fig/vm_util_bin.pdf>
-Package pdftex.def Info: fig/vm_util_bin.pdf used on input line 654.
+Package pdftex.def Info: fig/vm_util_bin.pdf used on input line 655.
 (pdftex.def)             Requested size: 252.93718pt x 180.67265pt.
 
 <fig/vm_util_bex.pdf, id=914, 821.0675pt x 574.145pt>
 File: fig/vm_util_bex.pdf Graphic file (type pdf)
 
 <use fig/vm_util_bex.pdf>
-Package pdftex.def Info: fig/vm_util_bex.pdf used on input line 658.
+Package pdftex.def Info: fig/vm_util_bex.pdf used on input line 659.
 (pdftex.def)             Requested size: 252.93718pt x 180.67265pt.
  [28]
 <fig/high_bw_util.pdf, id=921, 821.0675pt x 574.145pt>
 File: fig/high_bw_util.pdf Graphic file (type pdf)
 
 <use fig/high_bw_util.pdf>
-Package pdftex.def Info: fig/high_bw_util.pdf used on input line 670.
+Package pdftex.def Info: fig/high_bw_util.pdf used on input line 671.
 (pdftex.def)             Requested size: 252.93718pt x 180.67265pt.
 
 <fig/low_bw_util.pdf, id=922, 821.0675pt x 574.145pt>
 File: fig/low_bw_util.pdf Graphic file (type pdf)
 
 <use fig/low_bw_util.pdf>
-Package pdftex.def Info: fig/low_bw_util.pdf used on input line 673.
+Package pdftex.def Info: fig/low_bw_util.pdf used on input line 674.
 (pdftex.def)             Requested size: 252.93718pt x 180.67265pt.
  [29 <./fig/vm_util_bin.pdf> <./fig/vm_util_bex.pdf
 
@@ -695,20 +739,20 @@ ple pdfs with page group included in a single page
 File: fig/collision_rate_num.pdf Graphic file (type pdf)
 
 <use fig/collision_rate_num.pdf>
-Package pdftex.def Info: fig/collision_rate_num.pdf used on input line 685.
+Package pdftex.def Info: fig/collision_rate_num.pdf used on input line 686.
 (pdftex.def)             Requested size: 252.93718pt x 180.67265pt.
 
 <fig/vm_util_num_p.pdf, id=1017, 821.0675pt x 574.145pt>
 File: fig/vm_util_num_p.pdf Graphic file (type pdf)
 
 <use fig/vm_util_num_p.pdf>
-Package pdftex.def Info: fig/vm_util_num_p.pdf used on input line 696.
+Package pdftex.def Info: fig/vm_util_num_p.pdf used on input line 697.
 (pdftex.def)             Requested size: 252.93718pt x 180.67265pt.
  [31 <./fig/collision_rate_num.pdf>]
 <fig/vm_util_p.pdf, id=1037, 821.0675pt x 574.145pt>
 File: fig/vm_util_p.pdf Graphic file (type pdf)
  <use fig/vm_util_p.pdf>
-Package pdftex.def Info: fig/vm_util_p.pdf used on input line 702.
+Package pdftex.def Info: fig/vm_util_p.pdf used on input line 703.
 (pdftex.def)             Requested size: 252.93718pt x 180.67265pt.
 
 [32 <./fig/vm_util_num_p.pdf> <./fig/vm_util_p.pdf
@@ -730,23 +774,20 @@ rieved
 [35]) [36] <wangjian.png, id=1087, 151.767pt x 187.902pt>
 File: wangjian.png Graphic file (type png)
  <use wangjian.png>
-Package pdftex.def Info: wangjian.png used on input line 744.
+Package pdftex.def Info: wangjian.png used on input line 745.
 (pdftex.def)             Requested size: 72.26999pt x 89.47514pt.
 
-Overfull \hbox (1.1381pt too wide) in paragraph at lines 744--745
-[][] 
- []
+<zhangxw.png, id=1088, 62.634pt x 82.8696pt>
+File: zhangxw.png Graphic file (type png)
+ <use zhangxw.png>
+Package pdftex.def Info: zhangxw.png used on input line 751.
+(pdftex.def)             Requested size: 72.26999pt x 95.61917pt.
 
-<Wang-photo.png, id=1088, 1043.9pt x 1284.8pt>
+<Wang-photo.png, id=1089, 1043.9pt x 1284.8pt>
 File: Wang-photo.png Graphic file (type png)
  <use Wang-photo.png>
-Package pdftex.def Info: Wang-photo.png used on input line 751.
+Package pdftex.def Info: Wang-photo.png used on input line 757.
 (pdftex.def)             Requested size: 72.26999pt x 88.94536pt.
-
-Overfull \hbox (1.1381pt too wide) in paragraph at lines 751--752
-[][] 
- []
-
 Package epstopdf Info: Source file: <sheng.eps>
 (epstopdf)                    date: 2017-11-29 16:33:45
 (epstopdf)                    size: 278641 bytes
@@ -755,35 +796,38 @@ Package epstopdf Info: Source file: <sheng.eps>
 (epstopdf)                    size: 23745 bytes
 (epstopdf)             Command: <epstopdf --outfile=sheng-eps-converted-to.pdf 
 sheng.eps>
-(epstopdf)             \includegraphics on input line 758.
+(epstopdf)             \includegraphics on input line 763.
 Package epstopdf Info: Output file is already uptodate.
-<sheng-eps-converted-to.pdf, id=1090, 361.35pt x 441.65pt>
+
+<sheng-eps-converted-to.pdf, id=1091, 361.35pt x 441.65pt>
 File: sheng-eps-converted-to.pdf Graphic file (type pdf)
 
 <use sheng-eps-converted-to.pdf>
-Package pdftex.def Info: sheng-eps-converted-to.pdf used on input line 758.
+Package pdftex.def Info: sheng-eps-converted-to.pdf used on input line 763.
 (pdftex.def)             Requested size: 72.26999pt x 88.32843pt.
+ <lu.png, id=1092, 36.135pt x 46.3185pt>
+File: lu.png Graphic file (type png)
 
-Overfull \hbox (1.1381pt too wide) in paragraph at lines 758--759
-[][] 
- []
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 764.
-[37 <./wangjian.png (PNG copy)> <./Wang-photo.png> <./sheng-eps-converted-to.pd
-f>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 764.
+<use lu.png>
+Package pdftex.def Info: lu.png used on input line 768.
+(pdftex.def)             Requested size: 72.26999pt x 92.64166pt.
+ [37 <./wangjian.png (PNG copy)> <./zhangxw.png> <./Wang-photo.png> <./sheng-ep
+s-converted-to.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 782.
+ [38 <./lu.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 782.
  (placement.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 764.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 764.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 782.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 782.
 Package rerunfilecheck Info: File `placement.out' has not changed.
 (rerunfilecheck)             Checksum: E9B4613ABEAC5243868545C656FB00CA;1234.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 764.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 782.
  ) 
 Here is how much of TeX's memory you used:
- 10671 strings out of 493335
- 153455 string characters out of 3144450
- 257725 words of memory out of 3000000
- 13914 multiletter control sequences out of 15000+200000
+ 10740 strings out of 493335
+ 154074 string characters out of 3144450
+ 260950 words of memory out of 3000000
+ 13979 multiletter control sequences out of 15000+200000
  11070 words of font info for 43 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,9n,39p,1709b,489s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -805,9 +849,9 @@ cmsy7.pfb><D:/latex/miktex/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/latex/m
 iktex/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/latex/miktex/fonts/type1/pu
 blic/amsfonts/cm/cmti8.pfb><D:/latex/miktex/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb><D:/latex/miktex/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on placement.pdf (37 pages, 4290507 bytes).
+Output written on placement.pdf (38 pages, 4359745 bytes).
 PDF statistics:
- 1210 PDF objects out of 1440 (max. 8388607)
- 115 named destinations out of 1000 (max. 500000)
- 240 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1212 PDF objects out of 1440 (max. 8388607)
+ 113 named destinations out of 1000 (max. 500000)
+ 250 words of extra memory for PDF output out of 10000 (max. 10000000)
 
