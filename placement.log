@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.22)  23 DEC 2017 12:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.22)  5 JAN 2018 14:15
 entering extended mode
 **./placement.tex
 (placement.tex
@@ -575,65 +575,65 @@ n/10 (short for \OT1/cmr/m/it/10 v\OT1/cmr/m/n/10 irtual \OT1/cmr/m/it/10 M\OT1
 File: fig/topology.pdf Graphic file (type pdf)
 
 <use fig/topology.pdf>
-Package pdftex.def Info: fig/topology.pdf used on input line 183.
+Package pdftex.def Info: fig/topology.pdf used on input line 194.
 (pdftex.def)             Requested size: 325.215pt x 162.61238pt.
  [5pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.192 
+l.203 
        <./fig/topology.pdf>] [6] [7] [8]
 <fig/tagmodel.pdf, id=425, 205.9695pt x 68.05426pt>
 File: fig/tagmodel.pdf Graphic file (type pdf)
  <use fig/tagmodel.pdf>
-Package pdftex.def Info: fig/tagmodel.pdf used on input line 243.
+Package pdftex.def Info: fig/tagmodel.pdf used on input line 258.
 (pdftex.def)             Requested size: 325.215pt x 107.4539pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 248.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 263.
 
 
 (D:\latex\miktex\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 248.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 263.
  [9pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.249 
+l.264 
        <./fig/tagmodel.pdf>] <fig/chain.pdf, id=480, 157.78949pt x 46.37325pt>
 File: fig/chain.pdf Graphic file (type pdf)
 
 <use fig/chain.pdf>
-Package pdftex.def Info: fig/chain.pdf used on input line 258.
+Package pdftex.def Info: fig/chain.pdf used on input line 273.
 (pdftex.def)             Requested size: 252.94499pt x 74.34233pt.
  [10pdfTeX warning (ext4): destination with the same identifier (name{figure.3}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.268 
+l.283 
        <./fig/chain.pdf>]
 <fig/abstraction.pdf, id=511, 264.38774pt x 105.39375pt>
 File: fig/abstraction.pdf Graphic file (type pdf)
 
 <use fig/abstraction.pdf>
-Package pdftex.def Info: fig/abstraction.pdf used on input line 276.
+Package pdftex.def Info: fig/abstraction.pdf used on input line 291.
 (pdftex.def)             Requested size: 325.215pt x 129.6464pt.
  [11] [12pdfTeX warning (ext4): destination with the same identifier (name{figu
 re.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.290 
+l.305 
        <./fig/abstraction.pdf>] [13]
 <fig/bandwidth_requirement3.pdf, id=596, 779.31152pt x 632.3625pt>
 File: fig/bandwidth_requirement3.pdf Graphic file (type pdf)
 
 <use fig/bandwidth_requirement3.pdf>
-Package pdftex.def Info: fig/bandwidth_requirement3.pdf used on input line 357.
+Package pdftex.def Info: fig/bandwidth_requirement3.pdf used on input line 373.
 
 (pdftex.def)             Requested size: 252.94499pt x 205.24521pt.
  [14] [15pdfTeX warning (ext4): destination with the same identifier (name{figu
@@ -641,9 +641,9 @@ re.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.410 \begin{equation}
+l.428 \begin{equation}
                        <./fig/bandwidth_requirement3.pdf>] [16] [17]
-Overfull \hbox (1.64424pt too wide) in paragraph at lines 461--467
+Overfull \hbox (1.64424pt too wide) in paragraph at lines 479--485
 []\OT1/cmr/bx/n/10 Combining the place-ment prin-ci-ples. \OT1/cmr/m/n/10 Guide
 d by the ob-ser-va-tions above,
  []
@@ -652,17 +652,17 @@ d by the ob-ser-va-tions above,
 File: fig/exchange_example.pdf Graphic file (type pdf)
 
 <use fig/exchange_example.pdf>
-Package pdftex.def Info: fig/exchange_example.pdf used on input line 472.
+Package pdftex.def Info: fig/exchange_example.pdf used on input line 490.
 (pdftex.def)             Requested size: 325.215pt x 206.44572pt.
  [18] [19pdfTeX warning (ext4): destination with the same identifier (name{figu
 re.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.485 
+l.503 
        <./fig/exchange_example.pdf>] [20]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 524.
+put line 542.
  [21] [22] [23]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
@@ -672,34 +672,34 @@ Missing character: There is no ™ in font cmr10!
 File: fig/scalability.pdf Graphic file (type pdf)
 
 <use fig/scalability.pdf>
-Package pdftex.def Info: fig/scalability.pdf used on input line 661.
+Package pdftex.def Info: fig/scalability.pdf used on input line 679.
 (pdftex.def)             Requested size: 325.215pt x 152.9219pt.
  [26pdfTeX warning (ext4): destination with the same identifier (name{figure.7}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.673 \begin{equation}
+l.691 \begin{equation}
                        <./fig/scalability.pdf>] [27]
 <fig/accept_rate_bin.pdf, id=872, 821.0675pt x 574.145pt>
 File: fig/accept_rate_bin.pdf Graphic file (type pdf)
 
 <use fig/accept_rate_bin.pdf>
-Package pdftex.def Info: fig/accept_rate_bin.pdf used on input line 727.
+Package pdftex.def Info: fig/accept_rate_bin.pdf used on input line 745.
 (pdftex.def)             Requested size: 231.26378pt x 161.71442pt.
 
 <fig/accept_rate_bex.pdf, id=873, 821.0675pt x 574.145pt>
 File: fig/accept_rate_bex.pdf Graphic file (type pdf)
 
 <use fig/accept_rate_bex.pdf>
-Package pdftex.def Info: fig/accept_rate_bex.pdf used on input line 736.
+Package pdftex.def Info: fig/accept_rate_bex.pdf used on input line 754.
 (pdftex.def)             Requested size: 231.26378pt x 161.71442pt.
  [28pdfTeX warning (ext4): destination with the same identifier (name{figure.8}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.742 
+l.760 
        <./fig/accept_rate_bin.pdf> <./fig/accept_rate_bex.pdf
 
 pdfTeX warning: pdflatex.exe (file ./fig/accept_rate_bex.pdf): PDF inclusion: m
@@ -712,17 +712,17 @@ Missing character: There is no ™ in font cmr10!
 File: fig/vm_util_bin.pdf Graphic file (type pdf)
 
 <use fig/vm_util_bin.pdf>
-Package pdftex.def Info: fig/vm_util_bin.pdf used on input line 760.
+Package pdftex.def Info: fig/vm_util_bin.pdf used on input line 778.
 (pdftex.def)             Requested size: 231.26378pt x 161.71442pt.
 
 <fig/vm_util_bex.pdf, id=920, 821.0675pt x 574.145pt>
 File: fig/vm_util_bex.pdf Graphic file (type pdf)
 
 <use fig/vm_util_bex.pdf>
-Package pdftex.def Info: fig/vm_util_bex.pdf used on input line 764.
+Package pdftex.def Info: fig/vm_util_bex.pdf used on input line 782.
 (pdftex.def)             Requested size: 231.26378pt x 161.71442pt.
  [29]
-Overfull \hbox (1.99953pt too wide) in paragraph at lines 769--770
+Overfull \hbox (1.99953pt too wide) in paragraph at lines 787--788
 \OT1/cmr/m/n/10 While the ac-cept rate of Stratos drops quickly when $\OML/cmm/
 m/it/10 B[]$ \OT1/cmr/m/n/10 is greater than 800Mbps.
  []
@@ -732,7 +732,7 @@ m/it/10 B[]$ \OT1/cmr/m/n/10 is greater than 800Mbps.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.770 
+l.788 
        <./fig/vm_util_bin.pdf> <./fig/vm_util_bex.pdf
 
 pdfTeX warning: pdflatex.exe (file ./fig/vm_util_bex.pdf): PDF inclusion: multi
@@ -741,21 +741,21 @@ ple pdfs with page group included in a single page
 File: fig/high_bw_util.pdf Graphic file (type pdf)
 
 <use fig/high_bw_util.pdf>
-Package pdftex.def Info: fig/high_bw_util.pdf used on input line 775.
+Package pdftex.def Info: fig/high_bw_util.pdf used on input line 793.
 (pdftex.def)             Requested size: 231.26378pt x 161.71442pt.
 
 <fig/low_bw_util.pdf, id=966, 821.0675pt x 574.145pt>
 File: fig/low_bw_util.pdf Graphic file (type pdf)
 
 <use fig/low_bw_util.pdf>
-Package pdftex.def Info: fig/low_bw_util.pdf used on input line 778.
+Package pdftex.def Info: fig/low_bw_util.pdf used on input line 796.
 (pdftex.def)             Requested size: 231.26378pt x 161.71442pt.
  [31pdfTeX warning (ext4): destination with the same identifier (name{figure.10
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.786 
+l.804 
        <./fig/high_bw_util.pdf> <./fig/low_bw_util.pdf
 
 pdfTeX warning: pdflatex.exe (file ./fig/low_bw_util.pdf): PDF inclusion: multi
@@ -764,7 +764,7 @@ ple pdfs with page group included in a single page
 File: fig/collision_rate_num.pdf Graphic file (type pdf)
 
 <use fig/collision_rate_num.pdf>
-Package pdftex.def Info: fig/collision_rate_num.pdf used on input line 789.
+Package pdftex.def Info: fig/collision_rate_num.pdf used on input line 807.
 (pdftex.def)             Requested size: 231.26378pt x 161.71442pt.
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
@@ -774,19 +774,19 @@ Missing character: There is no ™ in font cmr10!
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.796 
+l.814 
        <./fig/collision_rate_num.pdf>]
 <fig/vm_util_num_p.pdf, id=1037, 821.0675pt x 574.145pt>
 File: fig/vm_util_num_p.pdf Graphic file (type pdf)
 
 <use fig/vm_util_num_p.pdf>
-Package pdftex.def Info: fig/vm_util_num_p.pdf used on input line 804.
+Package pdftex.def Info: fig/vm_util_num_p.pdf used on input line 822.
 (pdftex.def)             Requested size: 231.26378pt x 161.71442pt.
 
 <fig/vm_util_p.pdf, id=1038, 821.0675pt x 574.145pt>
 File: fig/vm_util_p.pdf Graphic file (type pdf)
  <use fig/vm_util_p.pdf>
-Package pdftex.def Info: fig/vm_util_p.pdf used on input line 810.
+Package pdftex.def Info: fig/vm_util_p.pdf used on input line 828.
 (pdftex.def)             Requested size: 231.26378pt x 161.71442pt.
 
 [33pdfTeX warning (ext4): destination with the same identifier (name{figure.12}
@@ -794,13 +794,13 @@ Package pdftex.def Info: fig/vm_util_p.pdf used on input line 810.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.820 
+l.838 
        <./fig/vm_util_num_p.pdf>] [34pdfTeX warning (ext4): destination with th
 e same identifier (name{figure.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.834 
+l.852 
        <./fig/vm_util_p.pdf>] (placement.bbl [35]
 Underfull \hbox (badness 10000) in paragraph at lines 47--50
 []\OT1/cmr/m/n/10 I. web por-tal, Net-work func-tions vir-tu-al-i-sa-tion., in:
@@ -816,19 +816,19 @@ rieved
 [36]) [37] <wangjian.png, id=1092, 151.767pt x 187.902pt>
 File: wangjian.png Graphic file (type png)
  <use wangjian.png>
-Package pdftex.def Info: wangjian.png used on input line 855.
+Package pdftex.def Info: wangjian.png used on input line 873.
 (pdftex.def)             Requested size: 72.26999pt x 89.47514pt.
 
 <zhangxw.png, id=1093, 62.634pt x 82.8696pt>
 File: zhangxw.png Graphic file (type png)
  <use zhangxw.png>
-Package pdftex.def Info: zhangxw.png used on input line 861.
+Package pdftex.def Info: zhangxw.png used on input line 879.
 (pdftex.def)             Requested size: 72.26999pt x 95.61917pt.
 
 <Wang-photo.png, id=1094, 1043.9pt x 1284.8pt>
 File: Wang-photo.png Graphic file (type png)
  <use Wang-photo.png>
-Package pdftex.def Info: Wang-photo.png used on input line 867.
+Package pdftex.def Info: Wang-photo.png used on input line 885.
 (pdftex.def)             Requested size: 72.26999pt x 88.94536pt.
 Package epstopdf Info: Source file: <sheng.eps>
 (epstopdf)                    date: 2017-11-29 16:33:45
@@ -838,37 +838,37 @@ Package epstopdf Info: Source file: <sheng.eps>
 (epstopdf)                    size: 23745 bytes
 (epstopdf)             Command: <epstopdf --outfile=sheng-eps-converted-to.pdf 
 sheng.eps>
-(epstopdf)             \includegraphics on input line 873.
+(epstopdf)             \includegraphics on input line 891.
 Package epstopdf Info: Output file is already uptodate.
 
 <sheng-eps-converted-to.pdf, id=1096, 361.35pt x 441.65pt>
 File: sheng-eps-converted-to.pdf Graphic file (type pdf)
 
 <use sheng-eps-converted-to.pdf>
-Package pdftex.def Info: sheng-eps-converted-to.pdf used on input line 873.
+Package pdftex.def Info: sheng-eps-converted-to.pdf used on input line 891.
 (pdftex.def)             Requested size: 72.26999pt x 88.32843pt.
  <lu.png, id=1097, 36.135pt x 46.3185pt>
 File: lu.png Graphic file (type png)
 
 <use lu.png>
-Package pdftex.def Info: lu.png used on input line 878.
+Package pdftex.def Info: lu.png used on input line 896.
 (pdftex.def)             Requested size: 72.26999pt x 92.64166pt.
  [38 <./wangjian.png (PNG copy)> <./zhangxw.png> <./Wang-photo.png> <./sheng-ep
 s-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 892.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 910.
  [39 <./lu.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 892.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 910.
  (placement.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 892.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 892.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 910.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 910.
 Package rerunfilecheck Info: File `placement.out' has not changed.
-(rerunfilecheck)             Checksum: 3C1D7ACD07E2BCDB1DD3C82895E0A26C;1238.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 892.
+(rerunfilecheck)             Checksum: 6379482C69070C9AB9FF5AEA614936BA;1222.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 910.
  ) 
 Here is how much of TeX's memory you used:
  9737 strings out of 493335
  135477 string characters out of 3144450
- 241257 words of memory out of 3000000
+ 241307 words of memory out of 3000000
  12981 multiletter control sequences out of 15000+200000
  11070 words of font info for 43 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -891,7 +891,7 @@ cmsy7.pfb><D:/latex/miktex/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/latex/m
 iktex/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/latex/miktex/fonts/type1/pu
 blic/amsfonts/cm/cmti8.pfb><D:/latex/miktex/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb><D:/latex/miktex/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on placement.pdf (39 pages, 4367706 bytes).
+Output written on placement.pdf (39 pages, 4369770 bytes).
 PDF statistics:
  1216 PDF objects out of 1440 (max. 8388607)
  114 named destinations out of 1000 (max. 500000)

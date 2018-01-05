@@ -89,7 +89,7 @@ a solution that combines a tenant request model with an effective placement algo
 %provides bandwidth guarantee to both middleboxes and application, 
 while conducting a probability model based approach to addressing the middlebox scaling problem. We first specify the model of the tenant's requirement that matches the demands for virtual machines of application and middleboxes, as well as communication traffic. A joint virtual middleboxes and application placement algorithm 
 %called EMA (short for Exchanging Middlebox and Application) \begin{comment}STAMP(short for SofTwAre Middlebox Placement)\end{comment} 
-is then proposed to offer predictable network performance for each  tenant, and minimize  datacenter bandwidth utilization. Finally, we provide an approach to solving the middlebox scaling problem through reserving additional free virtual machine (VM) resources based on a probablility model. Extensive simulation results based on current large-scale datacenter networks verify that vMAP can accept more tenant requests than existing placement algorithm (e.g., Stratos) while saving  $\sim$10\% core-level bandwidth. The middlebox scaling experiments also show that our middlebox scaling approach can accommodate the scaling requirment effectively while minimizing the waste  of the reserved virtual machine resources.
+is then proposed to offer predictable network performance for each  tenant, and minimize  datacenter bandwidth utilization. Finally, we provide an approach to solving the middlebox scaling problem through reserving additional free virtual machine (VM) resources based on a probablility model. Extensive simulation results based on current large-scale datacenter networks verify that vMAP can accept more tenant requests than existing placement algorithm (e.g., Stratos) while saving  $\sim$10\% core-level bandwidth. The middlebox scaling experiments also show that our middlebox scaling approach can accommodate the scaling request effectively while minimizing the waste  of the reserved virtual machine resources.
 %is effective and provides network performance guarantee for tenants. 
 \end{abstract}
 %\begin{comment} 
@@ -122,29 +122,40 @@ Tenant's requirement is represented by a weighted directed acyclic graph (DAG). 
 
 
 
-Existing placement algorithm like Stratos \cite{stratos12} seeks to partition the VMs into per-rack partitions and tries to place them with minimal inter-partition communication. More Specifically, 
-Stratos adopts a greedy approach that proceeds by sorting pairs of partitions in the decreasing
-order of the inter-partition communication. For each pair, it finds a pair of racks with the highest available bandwidth to accommodate
-these two partitions. However, the inter-partition communication of the partition pair may travel through several switches %due to improper rack selection 
-even the partitions can be placed under the same switch, since Stratos only considers the bandwidth resource apart from the location of the rack pair when selecting racks. The location-unawareness rack selection in Stratos leads to a result of bandwidth waste of core-level links which are usually the bottlenecks for most oversubscription data center networks. % since the algorithm only considers the VM slots and bandwidth resources when selecting the racks to accomadate the partitions, which leads to a bandwidth waste of core-level links.  
+Existing placement algorithm like Stratos \cite{stratos12} seeks to partition the VMs into per-rack partitions and tries to place partitions with minimal inter-partition communication. More Specifically, 
+Stratos adopts a greedy approach to sorting pairs of partitions in the decreasing
+order of the inter-partition communication and finds a pair of racks with the highest available bandwidth to accommodate
+these two VM partitions. However, the location-unawareness rack selection in Stratos leads to bandwidth waste of core-level links which are usually the bottlenecks for most oversubscription data center networks. The inter-partition communication of the partition pair may travel through several switches %due to improper rack selection 
+even the partitions can be placed under the same switch, since Stratos only considers the bandwidth resource apart from the location of the rack pair when selecting racks.  % since the algorithm only considers the VM slots and bandwidth resources when selecting the racks to accomadate the partitions, which leads to a bandwidth waste of core-level links.  
 %Specifically, Stratos adopts a greedy approach to selecting a pair of racks with the highest available bandwidth for each partition pair that has communication.  
 In contrast, %based on the model of tenant request,
 to save the core-level bandwidth,
-we first traverse the datacenter topology in a bottom-up manner to search for a valid lowest level subtree \cite{B11tpd} that has enough VM slots for the tenant request, and then carefully places the required MBs and application in form of VMs under the subtree. 
+we first traverse the datacenter topology in a bottom-up manner to search for a valid lowest level subtree \cite{B11tpd} that has enough VM slots for the tenant request, and then carefully places the required MBs and application under the subtree. 
 %we design an effective algorithm that carefully places the required MBs and application in form of VMs in datacenter to maximize the utilization of resources (e.g., computation and network).
 %Moreover, to address the bandwidth constraint in an oversubscribed datacenter networks, we adopt the depth-first search (DFS) allocation algorithm in the tree-like datacenter topology to minimize the network bandwidth occupancy for each accepted tenant. 
 Moreover, 
 %to make good use of both physical machine resource and network bandwidth resource, 
-we consider dividing middleboxes and application VMs proportionally and putting them in the servers or racks under the same subtree to eliminate unnecessary communication cross racks or subtrees due to the mismatched assignment of traffic processing capacity. Further, we try to colocate more application VMs to reduce the intra-application communication cost through carefully exchanging the positions of middleboxes and application VMs.
+we consider dividing middleboxes and application VMs proportionally and putting them closely to each other 
+%in the servers or racks under the same subtree 
+to eliminate unnecessary communication cross racks or subtrees caused by the mismatched capacities between the upstream and downstream middleboxes or application VMs. 
+%the mismatched assignment of traffic processing capacity. 
+Further, we try to colocate more application VMs to reduce the intra-application communication cost through carefully exchanging the positions of middleboxes and application VMs.
 
-The performanc of middlebox is hard to predict in practice. And the experience based middlebox selection may cause an unreasonable estimation of the resource consumption. 
+The performanc of middlebox is hard to predict in practice. The experience based middlebox selection may cause an inexact estimation of the resource consumption and impact the application performace. %To avoid the situation that the middleboxes obtained by estimation cannot fully handle the application workload, we need to    
 %The application workload is variable in practice, which necessitates scaling middleboxes 
-Further, we need to accommodate a scaling request 
+%Further, %the application performance will be affected if the estimated number of middleboxes 
+%in order to 
+Hence, 
+to provide predictable application performance,
+it is necessary to conduct a middlebox scaling approach %request 
 %The middlebox scaling request is  
-when the capacity of allocated middleboxes cannot match the practical workload well. 
+when the capacity of allocated middleboxes cannot handle the practical workload well. 
 %To address the middlebox scaling problem, 
-Instead of dynamically allocating resources when the application is running which is inefficient and may cause improper placement,
-we adopt an approach of pre-allocating a few additional free VM slots to accommodate the scaling request. 
+In contrast to dynamically allocating slot resources when the application is running, %which is inefficient and may cause improper placement,
+we adopt an approach of pre-allocating a few additional free VM slots to accommodate the scaling request.
+The pre-allocating approach is helpful for fast and localized deployment of scaled middlebox instances, which 
+%The fast and localized deployment 
+can improve the application performance and reduce the bandwidth waste.  %which is beneficial 
 %If free slots or network resources are not enough, the middlebox chain and application VMs have to be placed separately but in closed racks or sub-trees to reduce the bandwidth consumption caused by communication intra- and inter-tenants. 
 
 
@@ -157,9 +168,9 @@ To the best of our knowledge, we are the first to model the virtual middlebox ne
 % We evaluate the benefits of vMAP through extensive simulations based on a large-scale datacenter topology. %  we show that the effectiveness of our VMs placement algorithm. 
 Extensive simulations on large-scale datacenter topology have shown the effectiveness of our VMs placement
 algorithm.
- The accept ratio approaches to 90\% with regard to a variety of tenants' requests.
+ %The accept ratio approaches to 90\% with regard to a variety of tenants' requests.
  % in a large-scale datacenter topology. 
- Compared with the existing placement algorithm, our algorithm can also greatly reduce the bandwidth utilization of core-level links while making the best of low-level links' bandwidth resource. The middlebox scaling approach can accommodate the scaling requirement effectively while minimizing the waste of the reserved VMs. %fragment that can not be used by newly arrived tenant requests. 
+Compared with the existing placement algorithm, our algorithm can also greatly reduce the bandwidth utilization of core-level links while making the best of low-level links' bandwidth resource. The middlebox scaling approach can accommodate the scaling requirement effectively while minimizing the waste of the reserved VMs. %fragment that can not be used by newly arrived tenant requests. 
 %Compared with the hardware middlebox placements in current datacenters, our VMs placement shows significant saving on network bandwidth in terms of providing  performance guarantee. 
 Generally, the network function virtualization enables the cloud services provider to offer customized services with lower cost and our study will be helpful to build more flexible software-based cloud services to meet diverse requirements of  the tenants in the datacenter network.
 
@@ -203,9 +214,12 @@ Since the underlying network is shared by tenants, the application can be affect
 \textbf{Placement of middlebox VMs with performance guarantee.}
 Most of previous works considered the bandwidth guarantee for applications. As far as we know, little work addresses the bandwidth guarantee for virtual MBs in multi-tenant datacenters \cite{nfv_challenges}. The NFV cloud computing platforms, like NFV OPEN LAB \cite{HuaweiNFV} and CloudNFV \cite{CloudNFV}, provide an architecture for NFV deployment and management.
 %provide NFV management and orchestration as applications.
- Theoretically, to obtain effect use of resources, various NFV placement objectives have been studied, for example, remaining data rate, latency, number of used network nodes as well as distance and setup cost, see \cite{M14sap, cohen2015near} and the references therein. However, they could not provide bandwidth guarantee for tenants. Stratos \cite{stratos12} considered the middlebox placement in multi-tenant datacenters through a systematic way by avoiding network congestion. In contrast, we first study the bandwidth guarantee
+ Theoretically, to obtain effect use of resources, various NFV placement objectives have been studied, for example, remaining data rate, latency, number of used network nodes as well as distance and setup cost, see \cite{M14sap, cohen2015near} and the references therein. However, they could not provide bandwidth guarantee for tenants. Stratos \cite{stratos12} considered the middlebox placement in multi-tenant datacenters through a systematic way by avoiding network congestion. In contrast,
+ we are the first to model the virtual middlebox network with intra- and inter-tenant communication and provide bandwidth guarantees for both middleboxes and application.
+ %In contrast, we first study the placment problem of the virtual middlebox network with intra- and inter-tenant communication 
+ %placement problem with bandwidth guarantee
 %consumption
- problem of both virtual middleboxes and application and then propose effective placement algorithm to make good use of network resources.
+ %problem of both virtual middleboxes and application and then propose effective placement algorithm to make good use of network resources.
  
 %\textcolor{red}{test}
 %{\color{red}
@@ -231,12 +245,13 @@ Therefore, %to better handle the practical workload,
 the scalability of MBs is important and need to be considered by the cloud service provider. Once the virtual network is placed in datacenter, it is hard to find a proper resource to migrate MBs and re-allocate live flows across MBs with performance guarantee \cite{G13dio}. We discuss the scalability issue in Section \ref{sec:scalibility}.
 
 
-\section{Abstraction of Virtual Middlebox Network}\label{sec:abstraction}
+\section{Virtual Middlebox Network}\label{sec:abstraction}
 In a multi-tenant datacenter, by leveraging the network function virtualization (NFV), cloud providers provide middlebox as a fundamental network service to tenants, like both computing and storage resources. A tenant could specify their middlebox and application (i.e., computation/storage) requirements in forms of VMs and the expected minimum bandwidth requirement for intra- and inter-tenant communication. Cloud providers will then assign VMs for middleboxes (in short, MB VMs) and applications (in short, APP VMs) according to the tenant's request. The cloud providers also enforce the middlebox policies, i.e., the sequence of middleboxes that a flow must traverse. In this section, we explain the model for APP VMs and MB VMs. We then introduce the abstraction of virtual networks associated to one tenant.
 
 
 \subsection{Model of APP VMs}
-To provide predictable network performance for the communication of $N$ APP VMs in one tenant, users typically specify the minimum bisection bandwidth $B^{in}$ for individual APP VM. Analogous to previous proposals \cite{B13cta, P12fst}, the requirement of the minimum bandwidth guarantee for each APP VM belonging to the same tenant can be abstracted by the \emph{hose model} \cite{hose_model}. In the hose model (see the thick black arrows in Fig. \ref{fig:hose}, tenant P), the application VMs are connected to a logical switch by a link of capability $B^{in}$.
+To provide predictable network performance for the communication of $N$ APP VMs in one tenant, users %typically
+specify the minimum bisection bandwidth $B^{in}$ for individual APP VM. Analogous to previous models \cite{B13cta, P12fst}, the requirement of the minimum bandwidth guarantee for each APP VM belonging to the same tenant can be abstracted by the \emph{hose model} \cite{hose_model}. In the hose model (see the thick black arrows in Fig. \ref{fig:hose}, tenant P), the application VMs are connected to a logical switch by a link of capability $B^{in}$.
 
 \begin{figure}
 	\centering
@@ -296,20 +311,21 @@ It is a remarkable fact that the behavior of current software middleboxes is act
 \section{Virtual Middlbox Network (VMN) Deployment}\label{sec:algorithm}
 Based on the tenant's request, the cloud provider allocates enough resources for MBs and APPs. The VMs request will be satisfied by providing enough free slots on physical machines (PMs). The network function demand consists of not only the bandwidth request but also the capability to process a specific class of traffic in order. We present a VM placement algorithm that bridges the gap between the high-level virtual middlbebox network model to the low-level physical network. The placement strategy is realized by a logically centralized controller, which manages datacenter operations through a global view of the network topology. SDN based traffic engineering manipulates the underlying network routers to explicitly direct the traffic through each middlebox sequentially. If there are not sufficient slot or network resources, the request will be rejected. 
 
-In this section, we first show the main idea of our placement algorithm. Next we analyze the bandwidth requirement (or bandwidth composition) for the tenant request. And then, we design a bandwidth saving placement strategy based on the bandwidth requirement analyzing. Finally, we present our placement algorithm to efficiently deploy the VMN model. 
+In this section, we first show the main idea of our placement algorithm. Next we analyze the bandwidth requirement (or bandwidth composition) for the tenant request. And then, we design a bandwidth saving placement strategy based on the bandwidth requirement analysis. Finally, we present our placement algorithm to efficiently deploy the VMN model. 
 %The virtual machine placement problems have attracted a lot of attentions recently, which are often formalized as a multi-dimensional packing problem with various constraints. This problem is NP-hard \cite{packing, fischer2013virtual}. %In this paper, 
 
 %Therefore, we search for effective heuristic solution to maximize the datacenter resources utilization. %Before introducing the VMs placement algorithm, we first explain some practical constraints in our design. Next, 
 
-\subsection{Overview of the Placement Algorithm}
-For each placement of the tenant request, we aim to minimize the bandwidth consumption and save as much network resources as possible for future tenants. Instead of solving the placement problem as a graph partitioning problem \cite{stratos12}, we seek to analyze the original composition of bandwidth consumption and then plan to place the middleboxes and application carefully to reduce the amount of bandwidth composition pertinently.
+\subsection{Overview of the Placement Strategy}%Algorithm}
+For the placement of the tenant request, we aim to minimize the bandwidth consumption and save as much network resources as possible for future tenants. Instead of solving the placement problem as a graph partitioning problem \cite{stratos12}, we seek to analyze the original composition of bandwidth consumption and then plan to place the middleboxes and application carefully to reduce the amount of bandwidth composition pertinently.
 %avoid the generation of extra bandwith consumption .
 Further, we find that: 1) placing different types of middleboxes with application VMs together or closely is an effective approach to reducing the bandwidth consumption of middlebox-to-middlebox and middlebox-to-application; And 2) colocating application VMs is much beneficial for saving bandwidth of intra application. However, it is hard to give consideration to both beneficial placement principles at a time
 %giving consideration to both beneficial placement principles above at once is not trivial 
-when deploying the tenant request due to limited VM slot resources in practice. Therefore, we seek to firstly consider enforcing one placement principle and then try to improve another principle's benefit by carefully breaking the enforced principle before. %previously.
-The break of the enforced principle is worthy when the achieved benefit outweights the break loss.
+when deploying the tenant request due to the limited VM slot resource. %in practice. 
+Therefore, we seek to firstly consider enforcing one placement principle and then try to improve another principle's benefit by carefully violating the enforced principle before. %previously.
+The violation of the enforced principle is worthy when the achieved benefit outweights the violation loss.
 
-In the remaining part of this section, we will first analyze the composition of bandwidth consumption, and then obtain the key conditions for beneficial break based on the analysis of bandwidth consumption. The placement algorithm is finally showed according to the conditions of the beneficial break.   
+In the remaining part of this section, we will first analyze the composition of bandwidth consumption, and then obtain the key condition for beneficial violation based on the analysis of bandwidth consumption. The placement algorithm is finally showed according to the condition of the beneficial violation.   
  
 %we have to make tradeoff between the two benefical placement principles above  due to limited VM slot resources in practice. And resultantly, we have our exchanging placement algorithm to better place the middleboxes and application. 
 
@@ -355,7 +371,7 @@ In the remaining part of this section, we will first analyze the composition of 
 	\centering
 	     %\includegraphics[width=3.2 in, height=2.5in]{fig/bandwidth_requirement3.pdf}
 	     \includegraphics[width=3.5in]{fig/bandwidth_requirement3.pdf}
-	\caption{Bandwidth requirement}
+	\caption{Bandwidth requirement of $\langle N,B^{in},B^{ex},T,M\rangle$, where $T=\{MB_1,MB_2\}$, $M=\{M_1,M_2\}$}
 	\label{fig:bw}
 \end{figure}
 
@@ -384,12 +400,12 @@ In the remaining part of this section, we will first analyze the composition of 
 %\end{figure}
 %In the subsequence,%
 %Based on above calculation, 
-Given a tenant request, the cloud provider needs to allocate sufficient bandwidth on the physical links to meet the bandwidth guarantees requirements specified in the VMN model. We then analyze the bandwidth consumption to achieve a better understanding of the MBs placement problem. 
+Given a tenant request, the cloud provider needs to allocate sufficient bandwidth on the physical links to meet the bandwidth requirements specified in the VMN model. We then analyze the bandwidth consumption to achieve a better understanding of the MBs placement problem. 
 
 Consider a tenant request with a simple middlebox chain $\{MB_1, MB_2\}$ and assume that we have found two candidate subtrees that have enough slot resources to hold the request 
 %required VMs for both MBs and APPs 
 as shown in Fig. \ref{fig:bw}. %The incoming traffic will pass the $MB_1$ and $MB_2$ successively and finally arrive at the tenant application. 
-The total number of instances required by middlebox $k$ ($MB_k$) is indicated by $M_k$\footnote{We assume each instance of $MB_k$ has a maximal traffic processing capacity $c_k$, so the minimum required number of $MB_k$ is defined as 
+The total number of instances required by $MB_k$ is indicated by $M_k$\footnote{We assume each instance of $MB_k$ has a maximal traffic processing capacity $c_k$, so the minimum required number of $MB_k$ is defined as 
 	%\begin{equation}
 	$M_{k}={\left\lceil\frac{N \cdot B^{ex}}{c_{k}}\right\rceil}$,
 	%\end{equation}
@@ -400,12 +416,14 @@ The total number of instances required by middlebox $k$ ($MB_k$) is indicated by
 
 %We then calculate the bandwidth consumption. Suppose 
 %the middlebox instances prefer to send the traffic to its downstream middlebox instances inside the same subtree.
-As shown in Fig. \ref{fig:bw}, the incoming traffic will pass the $MB_1$ and $MB_2$ successively and  arrive at the tenant application finally. The traffic flows across and inside the subtrees are illustrated in thick and fine arrows respectively. Specifically,
-the middlebox prefer to send the traffic to its downstream middlebox or application inside the same subtree (see the \emph{thin arrows}). 
+As shown in Fig. \ref{fig:bw}, the incoming traffic will pass the $MB_1$ and $MB_2$ successively and  arrive at the tenant application finally. The traffic flows across and inside the subtrees are illustrated in thick and fine arrows respectively. %Specifically,
+%the middlebox prefer to send 
+The middlebox splits the traffic proportionally to its downstream middlebox or application inside the same subtree (see the \emph{thin arrows}). 
 %The traffic from $MB_k$ will be partly sent to the downstream middlebox outside the subtree if 
 In the case that the traffic cannot be fully handled by the downstream middlebox or application inside the same subtree, it will be partly sent to the downstream middlebox or application outside the subtree (see the \emph{thick arrows}). 
 %the traffic from $MB_k$ in the same subtree will be sent to  
-Further, we find that the bandwidth consumption across the subtrees consists of four parts indicated by $B_1$, $B_2$, $B_3$ and $B_4$. The $B_1$ is the external traffic (represented by the black arrows) from the switch to $MB_1$ which is equal to $N\cdot B^{ex}$. The traffic that cannot be fully processed by $MB_2$ in the left will be partly sent to the instances of $MB_2$ in the right subtree as shown in the blue arrow labeled by $B_2$. Similarly, the traffic from $MB_2$ in the right to APP will be partly sent to the APP VMs in the left subtree (red arrow labled by $B_3$) if the capacity of APP VMs in the right cannot serve the whole traffic from $MB_2$ in the same side. Besides, the bandwidth requirement (dotted arrow labeled by $B_4$) for intra-application communication is $2\min(n_{app}  ,N-n_{app})\cdot B^{in}$. For simplicity, we only consider the downlink bandwidth consumption since the uplink bandwidth has the similar characteristics. %Based on above analysis,
+%Further,
+The bandwidth consumption across the subtrees consists of four parts indicated by $B_1$, $B_2$, $B_3$ and $B_4$. The $B_1$ denotes the external traffic (represented by the black arrows) from the switch to $MB_1$ which is equal to $N\cdot B^{ex}$. The traffic that cannot be fully processed by $MB_2$ in the left will be partly sent to the instances of $MB_2$ in the right subtree as shown in the blue arrow labeled by $B_2$. Similarly, the traffic from $MB_2$ in the right to APP will be partly sent to the APP VMs in the left subtree (red arrow labled by $B_3$) if the capacity of APP VMs in the right cannot serve the whole traffic from $MB_2$ in the same side. Besides, the bandwidth requirement (dotted arrow labeled by $B_4$) for intra-application communication is $2\min(n_{app}  ,N-n_{app})\cdot B^{in}$. For simplicity, we only consider the downlink bandwidth consumption since the uplink bandwidth has the similar characteristics. %Based on above analysis,
 Then, by summing up the four parts of the bandwidth consumption, we can get the total downlink bandwidth requirement across the subtrees:
 \begin{equation}
 \begin{aligned}
@@ -415,8 +433,8 @@ B_{total} = &B_1+B_2+B_3+B_4 \\
 &+2\min(n_{app}, N-n_{app})\cdot B^{in},
 \end{aligned}
 \end{equation}
-where $b_k$ is the practical required bandwidth\footnote{For each VMN model, %we assume that 
-	the total incoming traffic is equally assigned to each instance of $MB_k$. And the practical required bandwidth $b_k$ for each instance of $MB_k$ can be calculated by 
+where $b_k$ is the required bandwidth\footnote{For each VMN model, %we assume that 
+	the total incoming traffic is equally assigned to each instance of $MB_k$. And the required bandwidth $b_k$ for each instance of $MB_k$ can be calculated by 
 	%\begin{equation}
 	%\label{equ:bk}
 	$b_{k}=\frac{N\cdot B^{ex}}{M_{k}}$.
@@ -435,7 +453,7 @@ B_{total}= &B_{switch,mb_{1}}+B_{mb_k,mb_{k+1}}+B_{mb,app}+B_{app}\\
 \end{equation}
 %For the general situation, by adding all the inter-middlebox traffic going across the subtrees, we can get the following (new) equation:
 %
-$B_{switch,mb_1}$ is the incoming traffic for $MB_1$ from the switch which is a constant. $B_{mb_k,mb_{k+1}}$ and $B_{mb,app}$ are the incoming traffic for $MB_{k+1}$ and APP VMs across the subtrees from $MB_k$ respectively. $B_{app}$ represents the intra-application communication bandwidth requirement.
+$B_{switch,mb_1}$ is the incoming traffic for $MB_1$ from the switch which is equal to the external traffic demand. $B_{mb_k,mb_{k+1}}$ and $B_{mb,app}$ denote the incoming traffic for $MB_{k+1}$ and APP VMs across the subtrees from $MB_k$ respectively. $B_{app}$ represents the intra-application communication bandwidth requirement.
 
 %\subsection{Bandwidth Saving Conditions}
 \subsection{Bandwidth Saving Analysis}
@@ -456,9 +474,9 @@ with the increase of $n_{app}$, the intra-application bandwidth $B_{app}$ increa
 	placed in the left can be calculated by $m_k=\left\lfloor\frac{M_k}{\sum\nolimits_{i=1}^{n}M_i+N}\cdot N_{slot}\right\rfloor$. The number of APPs needed to be placed in the left is computed as $n_{app}=\left\lfloor\frac{N}{\sum\nolimits_{i=1}^{n}M_i+N}\cdot N_{slot}\right\rfloor$. Correspondingly, the numbers of $MB_k$ and APP placed in the right are given as $M_k-m_k$ and $N-n_{app}$ respectively.} \emph{is an effective approach to reducing the bandwidth consumption of $B_{mb_k,mb_{k+1}}$ and $B_{mb,app}$}, and 2) \emph{colocating APP VMs in one subtree is much beneficial to save the intra-application bandwidth requirement $B_{app}$}. 
 
 %Thus, we get the following two placement principles:
-\textbf{The problem of enforcing the beneficial placement principles.} However, the two beneficial placement principles cannot be always enforced simultanously due to the limited available VM slot resources in one subtree. As illustrated in Fig. \ref{fig:bw}, the VMs for middleboxes and application of the tenant request have to be distributed among the two subtrees since one subtree cannot accommodate the full request. Specifically, the APP VMs have to be placed in both two subtrees when enforcing the first principle, which will conflict with the second principle. When colocating all APP VMs in one subtree, the remaining available slots in the same subtree will be unable to hold the MB VMs and we have to place the MB VMs in another subtree, which will break the first principle. While the conflict or break is worthy when the achieved benefit of break outweights the break loss.
+\textbf{The problem of enforcing the beneficial placement principles.} However, the two beneficial placement principles cannot be always enforced simultanously due to the limited available VM slot resources in one subtree. As illustrated in Fig. \ref{fig:bw}, the VMs for middleboxes and application of the tenant request have to be distributed among the two subtrees since one subtree cannot accommodate the full request. Specifically, the APP VMs have to be placed in both two subtrees when enforcing the first principle, which will conflict with the second principle. When colocating all APP VMs in one subtree, the remaining available slots in the same subtree will be unable to hold the MB VMs and we have to place the MB VMs in another subtree, which will violate the first principle. While the conflict or violation is worthy when the achieved benefit of the principle violation outweights the violation loss.
 
-\textbf{Combining the placement principles.} Guided by the observations above, we seek to firstly consider enforcing the \emph{principle 1} and then try to improve the benefit of \emph{principle 2} by carefully breaking the enforced \emph{principle 1}. Specifically, to increase the degree of APP colocation in one subtree (enforce \emph{principle 2}), we can exchange the positions of MB and APP in two subtrees when \emph{principle 1} is already enforced. %The position exchanging may result in a change of bandwidth consumption.
+\textbf{Combining the placement principles.} Guided by the observations above, we seek to firstly consider enforcing the \emph{principle 1} and then try to improve the benefit of \emph{principle 2} by carefully violating the enforced \emph{principle 1}. Specifically, to increase the degree of APP colocation in one subtree (enforce \emph{principle 2}), we can exchange the positions of MB and APP in two subtrees when \emph{principle 1} is already enforced. %The position exchanging may result in a change of bandwidth consumption.
 The position exchanging may lead to mismatched capacities between the upstream and downstream MBs or APPs and produce extra traffic across subtrees. The bandwidth requirement $B_{mb_k,mb_{k+1}}$ or $B_{mb,app}$ then has an increment. On the contrary, we have a reduction of intra-application bandwidth requirement $B_{app}$ because of more APP VMs colocated. Therefore, we need to carefully select MB to exchange with APP to achieve the benefit of exchanging.
 %The bandwidth requirement of $B_{mb_k,mb_{k+1}}$ and $B_{mb,app}$ will have an increment due to the mismatched capacity in the subtree   
 %In the ideal case, the tenant request is fully placed in one subtree and the bandwidth compostions $B_{mb_k,mb_{k+1}}$, $B_{mb,app}$ and $B_{app}$ are reduced to zero. While in the genaral situation, one subtree is unable to accommodate the full tenant request and the VMs for middlebox and application of the request have to be distributed among two or more subtrees.    
@@ -815,7 +833,7 @@ Fig. \ref{fig:collision_rate_num} plots the practical collision rates as the num
 \end{figure}
 
 In Fig. \ref{fig:vm_util_num_p}, we further evaluate the reserved VMs' utilizations with different collision thresholds as the number of scaling requirements increases. As we can see that a higher reserved VMs'utilization relates to a larger collision threshold. In particular, we can guarantee that each scaling reqirement is satisfied by setting threshold $\rho=0.0$ at the cost of wasting almost a half of reserved VMs resources, which is not economic. We can also improve the reserved VMs' utilizations by setting a large value of $\rho$ (such as 0.8) while having to tolerate a high collision rates resultantly. To further illustrate the relations of reserved VMs utilizations, collision rates and collision thresholds, we plot the simulation results of the relations in Fig. \ref{fig:vm_util_p}.
-As shown by the two lines, the reserved VMs' utilizations and practical collision rates grow linearly in terms of the collision thresholds. When the collision threshold is equal to 0.4, we can have a higher reserved VMs utilizations (almost 80\%) with a lower practical collision rates (23\%). 
+As shown by the two lines, the reserved VMs' utilizations and practical collision rates grow linearly in terms of the collision thresholds. When the collision threshold is equal to 0.4, we can have a higher reserved VMs utilizations ($\sim$80\%) with a lower practical collision rates ($\sim$23\%). 
 %when collision threshold $\rho=0.4$. 
 
 \textbf{Summary.}
