@@ -21,6 +21,7 @@
 \emailauthor{waxili@nju.edu.cn}{Xiaoliang Wang\corref {correspondingauthor}}
 \emailauthor{sheng@nju.edu.cn}{Sheng Zhang\corref {}}
 \emailauthor{sanglu@nju.edu.cn}{Sanglu Lu\corref {}}
+\citation{stratos12}
 \Newlabel{correspondingauthor}{1}
 \citation{G13dio,stratos12}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}}
@@ -28,7 +29,7 @@
 \citation{B13cta}
 \citation{stratos12}
 \citation{B11tpd}
-\citation{B13cta,williamson2010has}
+\citation{B13cta,williamson2010has,al2008scalable}
 \citation{B13cta}
 \citation{B13cta,P13acs}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Datacenter network and hardware middlebox deployment}}{5}{figure.1}}
@@ -39,8 +40,10 @@
 \citation{ClickOS,Y15NFV}
 \citation{NFV}
 \citation{D12tpp,S12dai,G13dio,ClickOS}
+\citation{benzekki2016software,qazi2013simple,anwer2013slick,gember2014opennf}
 \citation{B11tpd}
 \citation{P12fst}
+\citation{elasticswitch}
 \citation{B13cta}
 \citation{nfv_challenges}
 \citation{HuaweiNFV}
@@ -49,17 +52,17 @@
 \citation{stratos12}
 \citation{cloudmirror}
 \citation{B13cta}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Design Challenges}{7}{subsection.2.2}}
 \citation{hose_model,cloudmirror}
 \citation{G13dio}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Virtual Middlebox Network}{8}{section.3}}
-\newlabel{sec:abstraction}{{3}{8}{Virtual Middlebox Network}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Design Challenges}{8}{subsection.2.2}}
 \citation{B13cta,P12fst}
 \citation{hose_model}
 \citation{B13cta}
 \citation{B13cta}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Intra-tenant communication and inter-tenant communication}}{9}{figure.2}}
 \newlabel{fig:hose}{{2}{9}{Intra-tenant communication and inter-tenant communication}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Tenant Network Abstraction}{9}{section.3}}
+\newlabel{sec:abstraction}{{3}{9}{Tenant Network Abstraction}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Model of APP VMs}{9}{subsection.3.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Abstraction of MBs: Two MBs chains}}{10}{figure.3}}
 \newlabel{fig:chain}{{3}{10}{Abstraction of MBs: Two MBs chains}{figure.3}{}}
@@ -69,17 +72,17 @@
 \citation{hose_model}
 \citation{cloudmirror}
 \citation{cloudmirror}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Virtual Network Model for MB VMs and APP VMs}{11}{subsection.3.3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Virtual Network Model. (a) the communication between two tenants; (b) cascade of TAG}}{12}{figure.4}}
 \newlabel{fig:abstraction}{{4}{12}{Virtual Network Model. (a) the communication between two tenants; (b) cascade of TAG}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Virtual Network Model for MB VMs and APP VMs}{12}{subsection.3.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Virtual Network (VN) Deployment}{13}{section.4}}
+\newlabel{sec:algorithm}{{4}{13}{Virtual Network (VN) Deployment}{section.4}{}}
 \citation{stratos12}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Virtual Middlbox Network (VMN) Deployment}{13}{section.4}}
-\newlabel{sec:algorithm}{{4}{13}{Virtual Middlbox Network (VMN) Deployment}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Overview of the Placement Strategy}{13}{subsection.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Bandwidth Required by VMN}{14}{subsection.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Overview of the Placement Strategy}{14}{subsection.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Bandwidth Required by VN}{14}{subsection.4.2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Bandwidth requirement of $\delimiter "426830A N,B^{in},B^{ex},T,M\delimiter "526930B $, where $T=\{MB_1,MB_2\}$, $M=\{M_1,M_2\}$}}{15}{figure.5}}
 \newlabel{fig:bw}{{5}{15}{Bandwidth requirement of $\langle N,B^{in},B^{ex},T,M\rangle $, where $T=\{MB_1,MB_2\}$, $M=\{M_1,M_2\}$}{figure.5}{}}
-\newlabel{equ:bw_equation}{{2}{16}{Bandwidth Required by VMN}{equation.4.2}{}}
+\newlabel{equ:bw_equation}{{2}{16}{Bandwidth Required by VN}{equation.4.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Bandwidth Saving Analysis}{17}{subsection.4.3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Illustration of the bandwidth variation after exchange}}{19}{figure.6}}
 \newlabel{fig:exchange}{{6}{19}{Illustration of the bandwidth variation after exchange}{figure.6}{}}
@@ -88,13 +91,15 @@
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces VM Placement Algorithm}}{22}{algorithm.1}}
 \newlabel{alg1}{{1}{22}{Bandwidth Saving Analysis}{algorithm.1}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Exchange Algorithm}}{23}{algorithm.2}}
+\citation{zhang2016burstiness}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Middlebox Scaling Approach}{25}{section.5}}
-\newlabel{sec:scalibility}{{5}{25}{Middlebox Scaling Approach}{section.5}{}}
+\newlabel{sec:scalability}{{5}{25}{Middlebox Scaling Approach}{section.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Virtual Network Model. (a) the communication between two tenants; (b) cascade of TAG}}{26}{figure.7}}
 \newlabel{fig:scalability}{{7}{26}{Virtual Network Model. (a) the communication between two tenants; (b) cascade of TAG}{figure.7}{}}
 \newlabel{equ:collision}{{7}{26}{Middlebox Scaling Approach}{equation.5.7}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Evaluation}{27}{section.6}}
 \newlabel{sec:simulation}{{6}{27}{Evaluation}{section.6}{}}
+\citation{B13cta}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Simulation Setup}{28}{subsection.6.1}}
 \newlabel{fig:accept_rate_bin}{{8(a)}{28}{Subfigure 8(a)}{subfigure.8.1}{}}
 \newlabel{sub@fig:accept_rate_bin}{{(a)}{28}{Subfigure 8(a)\relax }{subfigure.8.1}{}}
@@ -132,23 +137,30 @@
 \newlabel{sec:final}{{7}{34}{Conclusion}{section.7}{}}
 \bibstyle{elsarticle-num}
 \bibdata{reference}
-\bibcite{G13dio}{{1}{}{{}}{{}}}
-\bibcite{stratos12}{{2}{}{{}}{{}}}
+\bibcite{stratos12}{{1}{}{{}}{{}}}
+\bibcite{G13dio}{{2}{}{{}}{{}}}
 \bibcite{B11tpd}{{3}{}{{}}{{}}}
 \bibcite{B13cta}{{4}{}{{}}{{}}}
 \bibcite{williamson2010has}{{5}{}{{}}{{}}}
-\bibcite{P13acs}{{6}{}{{}}{{}}}
-\bibcite{ClickOS}{{7}{}{{}}{{}}}
-\bibcite{Y15NFV}{{8}{}{{}}{{}}}
-\bibcite{NFV}{{9}{}{{}}{{}}}
-\bibcite{D12tpp}{{10}{}{{}}{{}}}
-\bibcite{S12dai}{{11}{}{{}}{{}}}
-\bibcite{P12fst}{{12}{}{{}}{{}}}
-\bibcite{nfv_challenges}{{13}{}{{}}{{}}}
-\bibcite{HuaweiNFV}{{14}{}{{}}{{}}}
-\bibcite{CloudNFV}{{15}{}{{}}{{}}}
-\bibcite{M14sap}{{16}{}{{}}{{}}}
-\bibcite{cohen2015near}{{17}{}{{}}{{}}}
-\bibcite{cloudmirror}{{18}{}{{}}{{}}}
-\bibcite{hose_model}{{19}{}{{}}{{}}}
+\bibcite{al2008scalable}{{6}{}{{}}{{}}}
+\bibcite{P13acs}{{7}{}{{}}{{}}}
+\bibcite{ClickOS}{{8}{}{{}}{{}}}
+\bibcite{Y15NFV}{{9}{}{{}}{{}}}
+\bibcite{NFV}{{10}{}{{}}{{}}}
+\bibcite{D12tpp}{{11}{}{{}}{{}}}
+\bibcite{S12dai}{{12}{}{{}}{{}}}
+\bibcite{benzekki2016software}{{13}{}{{}}{{}}}
+\bibcite{qazi2013simple}{{14}{}{{}}{{}}}
+\bibcite{anwer2013slick}{{15}{}{{}}{{}}}
+\bibcite{gember2014opennf}{{16}{}{{}}{{}}}
+\bibcite{P12fst}{{17}{}{{}}{{}}}
+\bibcite{elasticswitch}{{18}{}{{}}{{}}}
+\bibcite{nfv_challenges}{{19}{}{{}}{{}}}
+\bibcite{HuaweiNFV}{{20}{}{{}}{{}}}
+\bibcite{CloudNFV}{{21}{}{{}}{{}}}
+\bibcite{M14sap}{{22}{}{{}}{{}}}
+\bibcite{cohen2015near}{{23}{}{{}}{{}}}
+\bibcite{cloudmirror}{{24}{}{{}}{{}}}
+\bibcite{hose_model}{{25}{}{{}}{{}}}
+\bibcite{zhang2016burstiness}{{26}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers

@@ -1,18 +1,20 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: placement.aux
 The style file: elsarticle-num.bst
 Database file #1: reference.bib
-I was expecting a `,' or a `}'---line 151 of file reference.bib
- :   
- :   organization={ACM}
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Warning--can't use both volume and number fields in B11tpd
+Warning--can't use both volume and number fields in al2008scalable
 Warning--can't use both volume and number fields in P13acs
-Warning--empty year in NFV
+Warning--can't use both volume and number fields in Y15NFV
 Warning--empty pages in NFV
+Warning--can't use both volume and number fields in benzekki2016software
+Warning--can't use both volume and number fields in qazi2013simple
+Warning--can't use both volume and number fields in gember2014opennf
+Warning--can't use both volume and number fields in elasticswitch
+Warning--can't use both volume and number fields in nfv_challenges
 Warning--empty author in HuaweiNFV
 Warning--empty pages in HuaweiNFV
 Warning--empty author in CloudNFV
 Warning--empty pages in CloudNFV
 Warning--can't use both volume and number fields in hose_model
-(There was 1 error message)
+Warning--can't use both volume and number fields in zhang2016burstiness
+(There were 16 warnings)

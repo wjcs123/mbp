@@ -5,15 +5,15 @@
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
 
+\bibitem{stratos12}
+A.~Gember, A.~Akella, A.~Anand, T.~Benson, R.~Grandl, {Stratos: Virtual
+  middleboxes as first-class entities}, Tech. Rep. TR1771, University of
+  Wisconsin-Madison, 2012.
+
 \bibitem{G13dio}
 A.~Gember, R.~Grandl, J.~Khalid, A.~Akella, Design and implementation of a
   framework for software-defined middlebox networking, in: Proceedings of the
-  ACM SIGCOMM, 2013, pp. 467--468.
-
-\bibitem{stratos12}
-A.~Gember, A.~Akella, A.~Anand, T.~Benson, R.~Grandl, Stratos: Virtual
-  middleboxes as first-class entities, Tech. Rep. TR1771, University of
-  Wisconsin-Madison, 2012.
+  ACM SIGCOMM, ACM, 2013, pp. 467--468.
 
 \bibitem{B11tpd}
 H.~Ballani, P.~Costa, T.~Karagiannis, A.~Rowstron, Towards predictable
@@ -26,12 +26,17 @@ H.~Ballani, K.~Jang, T.~Karagiannis, C.~Kim, D.~Gunawardena, G.~O'Shea, Chatty
   NSDI, USENIX Association, 2013, pp. 171--184.
 
 \bibitem{williamson2010has}
-A.~Williamson, Has amazon ec2 become over subscribed,
+A.~Williamson, {Has amazon EC2 become over subscribed},
   http://alan.blog-city.com/has amazon ec2 become over subscribed.htm.
+
+\bibitem{al2008scalable}
+M.~Al-Fares, A.~Loukissas, A.~Vahdat, A scalable, commodity data center network
+  architecture, in: ACM SIGCOMM Computer Communication Review, Vol.~38, ACM,
+  2008, pp. 63--74.
 
 \bibitem{P13acs}
 P.~Patel, D.~Bansal, L.~Yuan, A.~Murthy, A.~Greenberg, D.~A. Maltz, R.~Kern,
-  H.~Kumar, M.~Zikos, H.~Wu, et~al., Ananta: Cloud scale load balancing, in:
+  H.~Kumar, M.~Zikos, H.~Wu, et~al., {Ananta: Cloud scale load balancing}, in:
   ACM SIGCOMM Computer Communication Review, Vol.~43, ACM, 2013, pp. 207--218.
 
 \bibitem{ClickOS}
@@ -41,12 +46,11 @@ J.~Martins, M.~Ahmed, C.~Raiciu, V.~Olteanu, M.~Honda, R.~Bifulco, F.~Huici,
 
 \bibitem{Y15NFV}
 R.~Yu, G.~Xue, V.~T. Kilari, X.~Zhang, Network function virtualization in the
-  multi-tenant cloud, Network IEEE 29~(3) (2015) 42--47.
+  multi-tenant cloud, in: IEEE Network, Vol.~29, 2015, pp. 42--47.
 
 \bibitem{NFV}
-I.~web portal, Network functions virtualisation., in:
-  http://portal.etsi.org/portal/server.pt/community/NFV/367, Retrieved 20 June
-  2013.
+\protect{ISG web portal}, {Network Functions Virtualisation.}, in:
+  http://portal.etsi.org/portal/server.pt/community/NFV/367, 2013.
 
 \bibitem{D12tpp}
 M.~Dobrescu, K.~Argyraki, S.~Ratnasamy, Toward predictable performance in
@@ -58,25 +62,52 @@ V.~Sekar, N.~Egi, S.~Ratnasamy, M.~K. Reiter, G.~Shi, Design and implementation
   of a consolidated middlebox architecture, in: Proceedings of the USENIX NSDI,
   USENIX Association, 2012, pp. 24--24.
 
+\bibitem{benzekki2016software}
+K.~Benzekki, A.~El~Fergougui, A.~Elbelrhiti~Elalaoui, Software-defined
+  networking ({SDN}): a survey, in: Security and Communication Networks,
+  Vol.~9, Wiley Online Library, 2016, pp. 5803--5833.
+
+\bibitem{qazi2013simple}
+Z.~A. Qazi, C.-C. Tu, L.~Chiang, R.~Miao, V.~Sekar, M.~Yu, Simple-fying
+  middlebox policy enforcement using {SDN}, in: ACM SIGCOMM computer
+  communication review, Vol.~43, ACM, 2013, pp. 27--38.
+
+\bibitem{anwer2013slick}
+B.~Anwer, T.~Benson, N.~Feamster, D.~Levin, J.~Rexford, A slick control plane
+  for network middleboxes, in: Proceedings of the second ACM SIGCOMM workshop
+  on Hot topics in software defined networking, ACM, 2013, pp. 147--148.
+
+\bibitem{gember2014opennf}
+A.~Gember-Jacobson, R.~Viswanathan, C.~Prakash, R.~Grandl, J.~Khalid, S.~Das,
+  A.~Akella, {OpenNF: Enabling innovation in network function control}, in: ACM
+  SIGCOMM Computer Communication Review, Vol.~44, ACM, 2014, pp. 163--174.
+
 \bibitem{P12fst}
 L.~Popa, G.~Kumar, M.~Chowdhury, A.~Krishnamurthy, S.~Ratnasamy, I.~Stoica,
-  Faircloud: sharing the network in cloud computing, in: Proceedings of the ACM
+  Faircloud: Sharing the network in cloud computing, in: Proceedings of the ACM
   SIGCOMM, ACM, 2012, pp. 187--198.
+
+\bibitem{elasticswitch}
+L.~Popa, P.~Yalagandula, S.~Banerjee, J.~C. Mogul, Y.~Turner, J.~R. Santos,
+  {Elasticswitch: Practical work-conserving bandwidth guarantees for cloud
+  computing}, in: ACM SIGCOMM Computer Communication Review, Vol.~43, ACM,
+  2013, pp. 351--362.
 
 \bibitem{nfv_challenges}
 R.~Mijumbi, J.~Serrat, J.-L. Gorricho, N.~Bouten, F.~De~Turck, R.~Boutaba,
-  Network function virtualization: State-of-the-art and research challenges,
-  IEEE Communications Surveys \& Tutorials 18~(1) (2016) 236--262.
+  {Network function virtualization: State-of-the-art and research challenges},
+  in: IEEE Communications Surveys \& Tutorials, Vol.~18, IEEE, 2016, pp.
+  236--262.
 
 \bibitem{HuaweiNFV}
-Huawei nfv open lab, in: http://pr.huawei.com/en/news, 2015.
+{Huawei NFV Open Lab}, in: http://pr.huawei.com/en/news, 2015.
 
 \bibitem{CloudNFV}
-Cloudnfv, in: http://www.cloudnfv.com/, 2015.
+{CloudNFV}, in: http://www.cloudnfv.com/, 2015.
 
 \bibitem{M14sap}
 S.~Mehraghdam, M.~Keller, H.~Karl, Specifying and placing chains of virtual
-  network functions, in: IEEE International Conference on Cloud NETWORKING,
+  network functions, in: IEEE International Conference on Cloud Networking,
   2014, pp. 7--13.
 
 \bibitem{cohen2015near}
@@ -93,5 +124,10 @@ N.~G. Duffield, P.~Goyal, A.~Greenberg, P.~Mishra, K.~K. Ramakrishnan, J.~E.
   van~der Merive, A flexible model for resource management in virtual private
   networks, in: ACM SIGCOMM Computer Communication Review, Vol.~29, ACM, 1999,
   pp. 95--108.
+
+\bibitem{zhang2016burstiness}
+S.~Zhang, Z.~Qian, Z.~Luo, J.~Wu, S.~Lu, Burstiness-aware resource reservation
+  for server consolidation in computing clouds, in: IEEE Transactions on
+  Parallel and Distributed Systems, Vol.~27, IEEE, 2016, pp. 964--977.
 
 \end{thebibliography}
